@@ -24,4 +24,4 @@ jobs:
       run: docker-compose build
 
     - name: Run Tests
-      run: docker-compose run aoetl python3 test_env_vars.py;
+      run: docker-compose run test-repo-name python3 test_env_vars.py;
