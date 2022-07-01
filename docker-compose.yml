@@ -1,0 +1,16 @@
+version: "3.4"
+services:
+  test-repo-name: 
+    image: test-repo-image
+    environment:
+      - LOGLEVEL
+      - RUN_ENV
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: base
+    volumes:
+      - ./data:/data
+    ports:
+      - 5678:5678
+
