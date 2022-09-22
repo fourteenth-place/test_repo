@@ -49,9 +49,13 @@ jobs:
       - name: Set fields
         env:
           GH_TOKEN: ${{ secrets.ADD_TO_PROJECTS_PAT }}
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo $DATE &&
           echo $DATE_FIELD_ID &&
+          echo $item
+          echo $project
+          echo "$GITHUB_CONTEXT"
           gh api graphql -f query='
             mutation (
               $project: ID!
@@ -73,7 +77,7 @@ jobs:
                   id
                   }
               }
-              set_date_posted: updateProjectV2ItemFieldValue(input: {
+              set_date_closed: updateProjectV2ItemFieldValue(input: {
                 projectId: $project
                 itemId: $item
                 fieldId: $date_field
