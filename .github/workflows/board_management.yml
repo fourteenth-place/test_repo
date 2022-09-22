@@ -16,5 +16,5 @@ jobs:
     steps:
       - uses: actions/add-to-project@v0.1.0
         with:
-          project-url: https://github.com/orgs/anderson-optimization/projects/5
+          project-url: https://github.com/orgs/fourteenth-place/projects/1
           github-token: ${{ secrets.ADD_TO_PROJECTS_PAT }}
