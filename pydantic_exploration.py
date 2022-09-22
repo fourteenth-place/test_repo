@@ -1,21 +1,27 @@
 from enum import Enum
-from typing import Optional, List
+from typing import Dict, Optional, List
 from pydantic import BaseModel
 
 
-class SomeOptsEnum(str, Enum):
+# class SomeOptsEnum(str, Enum):
     # poly: Polygon
     # line: Line
-    poly = 'poly'
+    # poly = 'poly'
 
+class MyObj(BaseModel):
+    something: str
 
+class ObjWrap(BaseModel):
+    arbstring: MyObj
+    
 class ParentModel(BaseModel):
     # some_opts: Optional[List[SomeOpts]]
-    fruit: SomeOptsEnum
+    fruit: ObjWrap
 
+sd = {'something': 'test'}
+data = {'fruit': {'arbstring': sd}}
 
-data = {'so': 'poly'}
+f = MyObj.parse_obj(sd)
+d = ParentModel.parse_obj(data)
 
-ParentModel(fruit='poly')
-
-print(1)
+print(d)
