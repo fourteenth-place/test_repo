@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Get project data
         env:
-          GITHUB_TOKEN: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          GH_TOKEN: ${{ secrets.ADD_TO_PROJECT_PAT }}
           ORGANIZATION: fourteenth-place
           PROJECT_NUMBER: 1
         run: |
@@ -52,7 +52,7 @@ jobs:
 
       - name: Add issue to project
         env:
-          GITHUB_TOKEN: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          GH_TOKEN: ${{ secrets.ADD_TO_PROJECT_PAT }}
           PR_ID: ${{ github.event.pull_request.node_id }}
         run: |
           item_id="$( gh api graphql -f query='
@@ -71,7 +71,7 @@ jobs:
 
       - name: Set fields
         env:
-          GITHUB_TOKEN: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          GH_TOKEN: ${{ secrets.ADD_TO_PROJECT_PAT }}
         run: |
           gh api graphql -f query='
             mutation (
