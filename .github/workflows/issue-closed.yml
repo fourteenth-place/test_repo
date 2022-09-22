@@ -51,6 +51,7 @@ jobs:
           GH_TOKEN: ${{ secrets.ADD_TO_PROJECTS_PAT }}
         run: |
           echo $DATE &&
+          echo $DATE_FIELD_ID &&
           gh api graphql -f query='
             mutation (
               $project: ID!
