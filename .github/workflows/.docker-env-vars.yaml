@@ -1,0 +1,27 @@
+# name: Run Python Tests
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+
+# env:
+#   RUN_ENV: 'cicd'
+
+# jobs:
+#   docker:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
+    
+#     - name: echo GH Context
+#       run: echo "$GITHUB_CONTEXT"
+
+#     - name: Build container
+#       run: docker-compose build
+
+#     - name: Run Tests
+#       run: docker-compose run test-repo-name python3 test_env_vars.py;
