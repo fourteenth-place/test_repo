@@ -6,6 +6,7 @@ on:
 jobs:
   track_pr:
     runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.merged }}
     steps:
       - name: Get project data
         env:
@@ -41,7 +42,7 @@ jobs:
           echo 'PROJECT_ID='$(jq '.data.organization.projectV2.id' project_data.json) >> $GITHUB_ENV
           echo 'DATE_FIELD_ID='$(jq '.data.organization.projectV2.fields.nodes[] | select(.name== "Date Closed") | .id' project_data.json) >> $GITHUB_ENV
           echo 'STATUS_FIELD_ID='$(jq '.data.organization.projectV2.fields.nodes[] | select(.name== "Status") | .id' project_data.json) >> $GITHUB_ENV
-          echo 'BACKLOG_OPTION_ID='$(jq '.data.organization.projectV2.fields.nodes[] | select(.name== "Status") | .options[] | select(.name=="Backlog") |.id' project_data.json) >> $GITHUB_ENV
+          echo 'PR_MERGED_ID='$(jq '.data.organization.projectV2.fields.nodes[] | select(.name== "Status") | .options[] | select(.name=="PR - Merged") |.id' project_data.json) >> $GITHUB_ENV
 
       - name: Add PR to project
         env:
@@ -99,4 +100,4 @@ jobs:
                   id
                 }
               }
-            }' -f project=$PROJECT_ID -f item=$ITEM_ID -f status_field=$STATUS_FIELD_ID -f status_value=${{ env.BACKLOG_OPTION_ID }} -f date_field=$DATE_FIELD_ID -f date_value=$DATE --silent
+            }' -f project=$PROJECT_ID -f item=$ITEM_ID -f status_field=$STATUS_FIELD_ID -f status_value=${{ env.PR_MERGED_ID }} -f date_field=$DATE_FIELD_ID -f date_value=$DATE --silent
