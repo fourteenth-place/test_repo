@@ -1,4 +1,4 @@
-name: Add PR to Project
+name: Merged PR
 on:
   pull_request:
     types:
