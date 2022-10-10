@@ -1,10 +1,10 @@
-name: Add Issue to Project
+name: Add PR to Project
 on:
-  issues:
+  pull_request:
     types:
       - closed
 jobs:
-  track_issue:
+  track_pr:
     runs-on: ubuntu-latest
     steps:
       - name: Get project data
@@ -41,7 +41,23 @@ jobs:
           echo 'PROJECT_ID='$(jq '.data.organization.projectV2.id' project_data.json) >> $GITHUB_ENV
           echo 'DATE_FIELD_ID='$(jq '.data.organization.projectV2.fields.nodes[] | select(.name== "Date Closed") | .id' project_data.json) >> $GITHUB_ENV
           echo 'STATUS_FIELD_ID='$(jq '.data.organization.projectV2.fields.nodes[] | select(.name== "Status") | .id' project_data.json) >> $GITHUB_ENV
-          echo 'DONE_OPTION_ID='$(jq '.data.organization.projectV2.fields.nodes[] | select(.name== "Status") | .options[] | select(.name=="Done") |.id' project_data.json) >> $GITHUB_ENV
+          echo 'BACKLOG_OPTION_ID='$(jq '.data.organization.projectV2.fields.nodes[] | select(.name== "Status") | .options[] | select(.name=="Backlog") |.id' project_data.json) >> $GITHUB_ENV
+
+      - name: Add PR to project
+        env:
+          GH_TOKEN: ${{ secrets.ADD_TO_PROJECTS_PAT }}
+          PR_ID: ${{ github.event.pull_request.node_id }}
+        run: |
+          item_id="$( gh api graphql -f query='
+            mutation($project:ID!, $pr:ID!) {
+              addProjectV2ItemById(input: {projectId: $project, contentId: $pr}) {
+                item {
+                  id
+                }
+              }
+            }' -f project=$PROJECT_ID -f pr=$PR_ID --jq '.data.addProjectV2ItemById.item.id')"
+
+            echo 'ITEM_ID='$item_id >> $GITHUB_ENV
 
       - name: Get date
         run: echo "DATE=$(date +"%Y-%m-%d")" >> $GITHUB_ENV
@@ -49,13 +65,7 @@ jobs:
       - name: Set fields
         env:
           GH_TOKEN: ${{ secrets.ADD_TO_PROJECTS_PAT }}
-          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
-          echo $DATE &&
-          echo $DATE_FIELD_ID &&
-          echo $item
-          echo $project
-          echo "$GITHUB_CONTEXT"
           gh api graphql -f query='
             mutation (
               $project: ID!
@@ -77,7 +87,7 @@ jobs:
                   id
                   }
               }
-              set_date_closed: updateProjectV2ItemFieldValue(input: {
+              set_date_posted: updateProjectV2ItemFieldValue(input: {
                 projectId: $project
                 itemId: $item
                 fieldId: $date_field
@@ -89,4 +99,4 @@ jobs:
                   id
                 }
               }
-            }' -f project=$PROJECT_ID -f item=$ITEM_ID -f status_field=$STATUS_FIELD_ID -f status_value=${{ env.DONE_OPTION_ID }} -f date_field=$DATE_FIELD_ID -f date_value=$DATE --silent
+            }' -f project=$PROJECT_ID -f item=$ITEM_ID -f status_field=$STATUS_FIELD_ID -f status_value=${{ env.BACKLOG_OPTION_ID }} -f date_field=$DATE_FIELD_ID -f date_value=$DATE --silent
