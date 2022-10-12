@@ -44,7 +44,7 @@ jobs:
           echo 'DONE_OPTION_ID='$(jq '.data.organization.projectV2.fields.nodes[] | select(.name== "Status") | .options[] | select(.name=="Done") |.id' project_data.json) >> $GITHUB_ENV
 
       - name: Get date
-        run: echo "DATE=$(date +"%Y-%m-%d")" >> $GITHUB_ENV
+        run: echo "DATE=$(date +"%Y-%m-%d")" >> $GITHUB_ENV && echo "$(date +"%Y-%m-%d")"
 
       - name: Set fields
         env:
