@@ -43,8 +43,24 @@ jobs:
           echo 'STATUS_FIELD_ID='$(jq '.data.organization.projectV2.fields.nodes[] | select(.name== "Status") | .id' project_data.json) >> $GITHUB_ENV
           echo 'DONE_OPTION_ID='$(jq '.data.organization.projectV2.fields.nodes[] | select(.name== "Status") | .options[] | select(.name=="Done") |.id' project_data.json) >> $GITHUB_ENV
 
+      - name: Add issue to project
+        env:
+          GH_TOKEN: ${{ secrets.ADD_TO_PROJECTS_PAT }}
+          ISSUE_ID: ${{ github.event.issue.node_id }}
+        run: |
+          item_id="$( gh api graphql -f query='
+            mutation($project:ID!, $issue:ID!) {
+              addProjectV2ItemById(input: {projectId: $project, contentId: $issue}) {
+                item {
+                  id
+                }
+              }
+            }' -f project=$PROJECT_ID -f issue=$ISSUE_ID --jq '.data.addProjectV2ItemById.item.id')"
+
+            echo 'ITEM_ID='$item_id >> $GITHUB_ENV
+
       - name: Get date
-        run: echo "DATE=$(date +"%Y-%m-%d")" >> $GITHUB_ENV && echo "$(date +"%Y-%m-%d")"
+        run: echo "DATE=$(date +"%Y-%m-%d")" >> $GITHUB_ENV && echo $(date +"%Y-%m-%d")
 
       - name: Set fields
         env:
