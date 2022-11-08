@@ -10,7 +10,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.ADD_TO_PROJECTS_PAT }}
           ORGANIZATION: anderson-optimization
-          PROJECT_NUMBER: 5
+          PROJECT_NUMBER: 1
         run: |
           gh api graphql -f query='
             query($org: String!, $number: Int!) {
@@ -52,8 +52,6 @@ jobs:
             mutation (
               $project: ID!
               $item: ID!
-              $status_field: ID!
-              $status_value: String!
               $date_field: ID!
               $date_value: Date!
             ) {
@@ -70,25 +68,3 @@ jobs:
                 }
               }
             }' -f project=$PROJECT_ID -f item=$ISSUE_ID -f date_field=$DATE_FIELD_ID -f date_value=$DATE --silent
-
-  pr_commented:
-    # This job only runs for pull request comments
-    name: PR comment
-    if: ${{ github.event.issue.pull_request }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo A comment on PR $NUMBER
-        env:
-          NUMBER: ${{ github.event.issue.number }}
-
-  issue_commented:
-    # This job only runs for issue comments
-    name: Issue comment
-    if: ${{ !github.event.issue.pull_request }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo A comment on issue $NUMBER
-        env:
-          NUMBER: ${{ github.event.issue.number }}
