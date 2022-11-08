@@ -9,7 +9,7 @@ jobs:
       - name: Get project data
         env:
           GH_TOKEN: ${{ secrets.ADD_TO_PROJECTS_PAT }}
-          ORGANIZATION: anderson-optimization
+          ORGANIZATION: fourteenth-place
           PROJECT_NUMBER: 1
         run: |
           gh api graphql -f query='
