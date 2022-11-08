@@ -1,0 +1,94 @@
+name: Update Last Activity Date
+on:
+  issue_comment:
+
+jobs:
+  issue_opened:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get project data
+        env:
+          GH_TOKEN: ${{ secrets.ADD_TO_PROJECTS_PAT }}
+          ORGANIZATION: anderson-optimization
+          PROJECT_NUMBER: 5
+        run: |
+          gh api graphql -f query='
+            query($org: String!, $number: Int!) {
+              organization(login: $org){
+                projectV2(number: $number) {
+                  id
+                  fields(first:20) {
+                    nodes {
+                      ... on ProjectV2Field {
+                        id
+                        name
+                      }
+                      ... on ProjectV2SingleSelectField {
+                        id
+                        name
+                        options {
+                          id
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }' -f org=$ORGANIZATION -F number=$PROJECT_NUMBER > project_data.json
+
+          echo 'PROJECT_ID='$(jq '.data.organization.projectV2.id' project_data.json) >> $GITHUB_ENV
+          echo 'DATE_FIELD_ID='$(jq '.data.organization.projectV2.fields.nodes[] | select(.name== "Date Last Activity") | .id' project_data.json) >> $GITHUB_ENV
+
+      - name: Get date
+        run: echo "DATE=$(date +"%Y-%m-%d")" >> $GITHUB_ENV
+
+      - name: Set fields
+        env:
+          GH_TOKEN: ${{ secrets.ADD_TO_PROJECTS_PAT }}
+          ISSUE_ID: ${{ github.event.issue.node_id }}
+        run: |
+          gh api graphql -f query='
+            mutation (
+              $project: ID!
+              $item: ID!
+              $status_field: ID!
+              $status_value: String!
+              $date_field: ID!
+              $date_value: Date!
+            ) {
+              set_date_last_activity: updateProjectV2ItemFieldValue(input: {
+                projectId: $project
+                itemId: $item
+                fieldId: $date_field
+                value: { 
+                  date: $date_value
+                }
+              }) {
+                projectV2Item {
+                  id
+                }
+              }
+            }' -f project=$PROJECT_ID -f item=$ISSUE_ID -f date_field=$DATE_FIELD_ID -f date_value=$DATE --silent
+
+  pr_commented:
+    # This job only runs for pull request comments
+    name: PR comment
+    if: ${{ github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo A comment on PR $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+
+  issue_commented:
+    # This job only runs for issue comments
+    name: Issue comment
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo A comment on issue $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
