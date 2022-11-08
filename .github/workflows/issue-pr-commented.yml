@@ -10,7 +10,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.ADD_TO_PROJECTS_PAT }}
           ORGANIZATION: anderson-optimization
-          PROJECT_NUMBER: 5
+          PROJECT_NUMBER: 1
         run: |
           gh api graphql -f query='
             query($org: String!, $number: Int!) {
