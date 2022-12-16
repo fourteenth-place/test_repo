@@ -4,11 +4,11 @@ from pydantic import BaseModel, Field
 
 
 class SubType1(BaseModel):
-    mytype: Literal['subtype1']
+    mytype: str = Literal['subtype1']
 
 
 class SubType2(BaseModel):
-    mytype: Literal['subtype2']
+    mytype: str = Literal['subtype2']
 
 
 class Model(BaseModel):
@@ -16,5 +16,5 @@ class Model(BaseModel):
     other: str
 
 
-m = Model(renderer={'mytype': 'subtype2'}, other='a')
-print(m)
+d = Model(renderer={'mytype': 'subtype1'}, other='a')
+print(d)
