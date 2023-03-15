@@ -75,6 +75,7 @@ jobs:
         env:
           PR: ${{ toJson(github.event.pull_request)}}
         run: |
+          echo "$PR"
 
       # DEBUG end
       - name: Deploy Tasks Version
