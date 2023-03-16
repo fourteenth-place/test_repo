@@ -13,14 +13,9 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # https://github.com/aws-actions/amazon-ecr-login
-
   deploy_task:
     timeout-minutes: 5
-    #   # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    # outputs:
-      # comment-id: ${{ steps.deploy-comment.outputs.comment-id }}
     steps:
       #  debug start
       - name: Dump GitHub context
@@ -28,34 +23,6 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
       
-      # - name: Dump job context
-      #   env:
-      #     JOB_CONTEXT: ${{ toJson(job) }}
-      #   run: echo "$JOB_CONTEXT"
-      # - name: Dump steps context
-      #   env:
-      #     STEPS_CONTEXT: ${{ toJson(steps) }}
-      #   run: echo "$STEPS_CONTEXT"
-      # - name: Dump runner context
-      #   env:
-      #     RUNNER_CONTEXT: ${{ toJson(runner) }}
-      #   run: echo "$RUNNER_CONTEXT"
-      # - name: Dump strategy context
-      #   env:
-      #     STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-      #   run: echo "$STRATEGY_CONTEXT"
-      # - name: Dump matrix context
-      #   env:
-      #     MATRIX_CONTEXT: ${{ toJson(matrix) }}
-      #   run: echo "$MATRIX_CONTEXT"
-
-      # - name: Show default environment variables
-      #   run: |
-      #     echo "The job_id is: $GITHUB_JOB"   # reference the default environment variables
-      #     echo "The id of this action is: $GITHUB_ACTION"   # reference the default environment variables
-      #     echo "The run id is: $GITHUB_RUN_ID"
-      #     echo "The GitHub Actor's username is: $GITHUB_ACTOR"
-      #     echo "GitHub SHA: $GITHUB_SHA"
       - name: Show pull request
         env:
           PR: ${{ toJson(github.event.pull_request)}}
@@ -67,10 +34,10 @@ jobs:
       #   run: echo "${{ toJson(github.event.pull_request) }}"
  
       - name: Deploy Tasks PR
-        if: (github.event.pull_request.number || github.ref == 'refs/heads/main') && github.event.pull_request.state == 'open'
+        if: github.event.pull_request.number # || github.ref == 'refs/heads/main') && github.event.pull_request.state == 'open'
         run: echo test
           
       - name: Deploy Tasks Main
-        if: (github.event.pull_request.number || github.ref == 'refs/heads/main') && github.event.pull_request.state == 'closed'
+        if: github.ref == 'refs/heads/main' # && !github.event.pull_request.number && !null
         run: echo test
 
