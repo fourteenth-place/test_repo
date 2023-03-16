@@ -59,8 +59,7 @@ jobs:
       - name: Show pull request
         env:
           PR: ${{ toJson(github.event.pull_request)}}
-        run: |
-          echo "$PR"
+        run: echo "$PR"
 
       # # DEBUG end
       # - name: Deploy Tasks Version
@@ -69,9 +68,9 @@ jobs:
  
       - name: Deploy Tasks PR
         if: (github.event.pull_request.number || github.ref == 'refs/heads/main') && github.event.pull_request.state == 'open'
-        run: echo "${{ toJson(github.event.pull_request) }}"
+        run: echo test
           
       - name: Deploy Tasks Main
         if: (github.event.pull_request.number || github.ref == 'refs/heads/main') && github.event.pull_request.state == 'closed'
-        run: echo "${{ toJson(github.event.pull_request) }}"
+        run: echo test
 
