@@ -11,127 +11,127 @@ from pydantic import BaseModel, Extra, Field
 
 
 class Status(Enum):
-    ERROR = 'ERROR'
-    MAINTENANCE = 'MAINTENANCE'
-    OK = 'OK'
+    ERROR = "ERROR"
+    MAINTENANCE = "MAINTENANCE"
+    OK = "OK"
 
 
 class Health(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    lastCheckTime: float = Field(..., title='lastCheckTime')
-    message: str = Field(..., title='message')
-    status: Status = Field(..., title='status')
+    lastCheckTime: float = Field(..., title="lastCheckTime")
+    message: str = Field(..., title="message")
+    status: Status = Field(..., title="status")
 
 
 class HostedBy(Enum):
-    ao = 'ao'
+    ao = "ao"
 
 
 class DataCategory(Enum):
-    Engineering = 'Engineering'
-    Other = 'Other'
-    Permitting = 'Permitting'
-    Real_Estate = 'Real Estate'
+    Engineering = "Engineering"
+    Other = "Other"
+    Permitting = "Permitting"
+    Real_Estate = "Real Estate"
 
 
 class LayerMetaData(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    comments: str = Field(..., title='comments')
-    dataCategory: Optional[DataCategory] = Field(None, title='dataCategory')
-    dateOfStudy: float = Field(..., title='dateOfStudy')
-    generationCapacity: float = Field(..., title='generationCapacity')
+    comments: str = Field(..., title="comments")
+    dataCategory: Optional[DataCategory] = Field(None, title="dataCategory")
+    dateOfStudy: float = Field(..., title="dateOfStudy")
+    generationCapacity: float = Field(..., title="generationCapacity")
 
 
 class ManagedBy(Enum):
-    ao = 'ao'
-    user = 'user'
+    ao = "ao"
+    user = "user"
 
 
 class Meta(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    aoDevNotes: Optional[str] = Field(None, title='aoDevNotes')
-    archived: bool = Field(..., title='archived')
-    health: Optional[Health] = Field(None, title='health')
-    hostedBy: Optional[HostedBy] = Field(None, title='hostedBy')
-    keywords: Optional[str] = Field(None, title='keywords')
-    layerMetaData: Optional[LayerMetaData] = Field(None, title='layerMetaData')
-    layerSortPriority: Optional[str] = Field(None, title='layerSortPriority')
-    managedBy: ManagedBy = Field(..., title='managedBy')
-    pageId: Optional[str] = Field(None, title='pageId')
-    sectionGroupName: Optional[str] = Field(None, title='sectionGroupName')
-    sectionGroupPriority: Optional[str] = Field(None, title='sectionGroupPriority')
-    sectionName: Optional[str] = Field(None, title='sectionName')
-    sectionPriority: Optional[str] = Field(None, title='sectionPriority')
-    sourceName: Optional[str] = Field(None, title='sourceName')
-    sourceUrl: Optional[str] = Field(None, title='sourceUrl')
+    aoDevNotes: Optional[str] = Field(None, title="aoDevNotes")
+    archived: bool = Field(..., title="archived")
+    health: Optional[Health] = Field(None, title="health")
+    hostedBy: Optional[HostedBy] = Field(None, title="hostedBy")
+    keywords: Optional[str] = Field(None, title="keywords")
+    layerMetaData: Optional[LayerMetaData] = Field(None, title="layerMetaData")
+    layerSortPriority: Optional[str] = Field(None, title="layerSortPriority")
+    managedBy: ManagedBy = Field(..., title="managedBy")
+    pageId: Optional[str] = Field(None, title="pageId")
+    sectionGroupName: Optional[str] = Field(None, title="sectionGroupName")
+    sectionGroupPriority: Optional[str] = Field(None, title="sectionGroupPriority")
+    sectionName: Optional[str] = Field(None, title="sectionName")
+    sectionPriority: Optional[str] = Field(None, title="sectionPriority")
+    sourceName: Optional[str] = Field(None, title="sourceName")
+    sourceUrl: Optional[str] = Field(None, title="sourceUrl")
 
 
 class Type(Enum):
-    layer_group = 'layer-group'
+    layer_group = "layer-group"
 
 
 class AoBaseClickConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    allowAllZooms: Optional[bool] = Field(None, title='allowAllZooms')
-    data: Optional[Any] = Field(None, title='data')
-    enabled: bool = Field(..., title='enabled')
-    factory: Optional[str] = Field(None, title='factory')
-    format: Optional[str] = Field(None, title='format')
-    hitTolerance: Optional[float] = Field(None, title='hitTolerance')
-    mergeOnField: Optional[str] = Field(None, title='mergeOnField')
-    responseName: Optional[str] = Field(None, title='responseName')
-    url: Optional[str] = Field(None, title='url')
-    urlEnd: Optional[str] = Field(None, title='urlEnd')
-    urlStart: Optional[str] = Field(None, title='urlStart')
-    zoomLevel: Optional[float] = Field(None, title='zoomLevel')
+    allowAllZooms: Optional[bool] = Field(None, title="allowAllZooms")
+    data: Optional[Any] = Field(None, title="data")
+    enabled: bool = Field(..., title="enabled")
+    factory: Optional[str] = Field(None, title="factory")
+    format: Optional[str] = Field(None, title="format")
+    hitTolerance: Optional[float] = Field(None, title="hitTolerance")
+    mergeOnField: Optional[str] = Field(None, title="mergeOnField")
+    responseName: Optional[str] = Field(None, title="responseName")
+    url: Optional[str] = Field(None, title="url")
+    urlEnd: Optional[str] = Field(None, title="urlEnd")
+    urlStart: Optional[str] = Field(None, title="urlStart")
+    zoomLevel: Optional[float] = Field(None, title="zoomLevel")
 
 
 class Type1(Enum):
-    click_local = 'click:local'
+    click_local = "click:local"
 
 
 class AoClickLocalConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    allowAllZooms: Optional[bool] = Field(None, title='allowAllZooms')
-    data: Optional[Any] = Field(None, title='data')
-    enabled: bool = Field(..., title='enabled')
-    factory: Optional[str] = Field(None, title='factory')
-    format: Optional[str] = Field(None, title='format')
-    hitTolerance: Optional[float] = Field(None, title='hitTolerance')
-    mergeOnField: Optional[str] = Field(None, title='mergeOnField')
-    responseName: Optional[str] = Field(None, title='responseName')
-    type: Type1 = Field(..., title='type')
-    url: Optional[str] = Field(None, title='url')
-    urlEnd: Optional[str] = Field(None, title='urlEnd')
-    urlStart: Optional[str] = Field(None, title='urlStart')
-    zoomLevel: Optional[float] = Field(None, title='zoomLevel')
+    allowAllZooms: Optional[bool] = Field(None, title="allowAllZooms")
+    data: Optional[Any] = Field(None, title="data")
+    enabled: bool = Field(..., title="enabled")
+    factory: Optional[str] = Field(None, title="factory")
+    format: Optional[str] = Field(None, title="format")
+    hitTolerance: Optional[float] = Field(None, title="hitTolerance")
+    mergeOnField: Optional[str] = Field(None, title="mergeOnField")
+    responseName: Optional[str] = Field(None, title="responseName")
+    type: Type1 = Field(..., title="type")
+    url: Optional[str] = Field(None, title="url")
+    urlEnd: Optional[str] = Field(None, title="urlEnd")
+    urlStart: Optional[str] = Field(None, title="urlStart")
+    zoomLevel: Optional[float] = Field(None, title="zoomLevel")
 
 
 class Type2(Enum):
-    click_remote = 'click:remote'
+    click_remote = "click:remote"
 
 
 class Type3(Enum):
-    click_remote_mapserver = 'click:remote:mapserver'
+    click_remote_mapserver = "click:remote:mapserver"
 
 
 class Type4(Enum):
-    click_remote_wms = 'click:remote:wms'
+    click_remote_wms = "click:remote:wms"
 
 
 class Parser(Enum):
-    aoAsset = 'aoAsset'
-    parcel = 'parcel'
+    aoAsset = "aoAsset"
+    parcel = "parcel"
 
 
 class AoCreateMappingConfig(BaseModel):
@@ -142,14 +142,14 @@ class AoCreateMappingConfig(BaseModel):
 
 
 class OlClass(Enum):
-    AoDrawing = 'AoDrawing'
+    AoDrawing = "AoDrawing"
 
 
 class AoDrawingConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    olClass: OlClass = Field(..., title='olClass')
+    olClass: OlClass = Field(..., title="olClass")
 
 
 class AoDrawingOptions(BaseModel):
@@ -160,159 +160,159 @@ class AoInitConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    center: Optional[List[float]] = Field(None, title='center')
-    minZoom: Optional[float] = Field(None, title='minZoom')
-    panTo: Optional[bool] = Field(None, title='panTo')
+    center: Optional[List[float]] = Field(None, title="center")
+    minZoom: Optional[float] = Field(None, title="minZoom")
+    panTo: Optional[bool] = Field(None, title="panTo")
 
 
 class Status1(Enum):
-    ERROR = 'ERROR'
-    MAINTENANCE = 'MAINTENANCE'
-    OK = 'OK'
+    ERROR = "ERROR"
+    MAINTENANCE = "MAINTENANCE"
+    OK = "OK"
 
 
 class Health1(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    lastCheckTime: float = Field(..., title='lastCheckTime')
-    message: str = Field(..., title='message')
-    status: Status1 = Field(..., title='status')
+    lastCheckTime: float = Field(..., title="lastCheckTime")
+    message: str = Field(..., title="message")
+    status: Status1 = Field(..., title="status")
 
 
 class HostedBy1(Enum):
-    ao = 'ao'
+    ao = "ao"
 
 
 class DataCategory1(Enum):
-    Engineering = 'Engineering'
-    Other = 'Other'
-    Permitting = 'Permitting'
-    Real_Estate = 'Real Estate'
+    Engineering = "Engineering"
+    Other = "Other"
+    Permitting = "Permitting"
+    Real_Estate = "Real Estate"
 
 
 class LayerMetaData1(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    comments: str = Field(..., title='comments')
-    dataCategory: Optional[DataCategory1] = Field(None, title='dataCategory')
-    dateOfStudy: float = Field(..., title='dateOfStudy')
-    generationCapacity: float = Field(..., title='generationCapacity')
+    comments: str = Field(..., title="comments")
+    dataCategory: Optional[DataCategory1] = Field(None, title="dataCategory")
+    dateOfStudy: float = Field(..., title="dateOfStudy")
+    generationCapacity: float = Field(..., title="generationCapacity")
 
 
 class ManagedBy1(Enum):
-    ao = 'ao'
-    user = 'user'
+    ao = "ao"
+    user = "user"
 
 
 class Meta1(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    aoDevNotes: Optional[str] = Field(None, title='aoDevNotes')
-    archived: bool = Field(..., title='archived')
-    health: Optional[Health1] = Field(None, title='health')
-    hostedBy: Optional[HostedBy1] = Field(None, title='hostedBy')
-    keywords: Optional[str] = Field(None, title='keywords')
-    layerMetaData: Optional[LayerMetaData1] = Field(None, title='layerMetaData')
-    layerSortPriority: Optional[str] = Field(None, title='layerSortPriority')
-    managedBy: ManagedBy1 = Field(..., title='managedBy')
-    pageId: Optional[str] = Field(None, title='pageId')
-    sectionGroupName: Optional[str] = Field(None, title='sectionGroupName')
-    sectionGroupPriority: Optional[str] = Field(None, title='sectionGroupPriority')
-    sectionName: Optional[str] = Field(None, title='sectionName')
-    sectionPriority: Optional[str] = Field(None, title='sectionPriority')
-    sourceName: Optional[str] = Field(None, title='sourceName')
-    sourceUrl: Optional[str] = Field(None, title='sourceUrl')
+    aoDevNotes: Optional[str] = Field(None, title="aoDevNotes")
+    archived: bool = Field(..., title="archived")
+    health: Optional[Health1] = Field(None, title="health")
+    hostedBy: Optional[HostedBy1] = Field(None, title="hostedBy")
+    keywords: Optional[str] = Field(None, title="keywords")
+    layerMetaData: Optional[LayerMetaData1] = Field(None, title="layerMetaData")
+    layerSortPriority: Optional[str] = Field(None, title="layerSortPriority")
+    managedBy: ManagedBy1 = Field(..., title="managedBy")
+    pageId: Optional[str] = Field(None, title="pageId")
+    sectionGroupName: Optional[str] = Field(None, title="sectionGroupName")
+    sectionGroupPriority: Optional[str] = Field(None, title="sectionGroupPriority")
+    sectionName: Optional[str] = Field(None, title="sectionName")
+    sectionPriority: Optional[str] = Field(None, title="sectionPriority")
+    sourceName: Optional[str] = Field(None, title="sourceName")
+    sourceUrl: Optional[str] = Field(None, title="sourceUrl")
 
 
 class Type5(Enum):
-    layer_group = 'layer-group'
+    layer_group = "layer-group"
 
 
 class Status2(Enum):
-    ERROR = 'ERROR'
-    MAINTENANCE = 'MAINTENANCE'
-    OK = 'OK'
+    ERROR = "ERROR"
+    MAINTENANCE = "MAINTENANCE"
+    OK = "OK"
 
 
 class Health2(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    lastCheckTime: float = Field(..., title='lastCheckTime')
-    message: str = Field(..., title='message')
-    status: Status2 = Field(..., title='status')
+    lastCheckTime: float = Field(..., title="lastCheckTime")
+    message: str = Field(..., title="message")
+    status: Status2 = Field(..., title="status")
 
 
 class HostedBy2(Enum):
-    ao = 'ao'
+    ao = "ao"
 
 
 class DataCategory2(Enum):
-    Engineering = 'Engineering'
-    Other = 'Other'
-    Permitting = 'Permitting'
-    Real_Estate = 'Real Estate'
+    Engineering = "Engineering"
+    Other = "Other"
+    Permitting = "Permitting"
+    Real_Estate = "Real Estate"
 
 
 class LayerMetaData2(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    comments: str = Field(..., title='comments')
-    dataCategory: Optional[DataCategory2] = Field(None, title='dataCategory')
-    dateOfStudy: float = Field(..., title='dateOfStudy')
-    generationCapacity: float = Field(..., title='generationCapacity')
+    comments: str = Field(..., title="comments")
+    dataCategory: Optional[DataCategory2] = Field(None, title="dataCategory")
+    dateOfStudy: float = Field(..., title="dateOfStudy")
+    generationCapacity: float = Field(..., title="generationCapacity")
 
 
 class ManagedBy2(Enum):
-    ao = 'ao'
-    user = 'user'
+    ao = "ao"
+    user = "user"
 
 
 class AoLayerGroupMeta(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    aoDevNotes: Optional[str] = Field(None, title='aoDevNotes')
-    archived: bool = Field(..., title='archived')
-    health: Optional[Health2] = Field(None, title='health')
-    hostedBy: Optional[HostedBy2] = Field(None, title='hostedBy')
-    keywords: Optional[str] = Field(None, title='keywords')
-    layerMetaData: Optional[LayerMetaData2] = Field(None, title='layerMetaData')
-    layerSortPriority: Optional[str] = Field(None, title='layerSortPriority')
-    managedBy: ManagedBy2 = Field(..., title='managedBy')
-    pageId: Optional[str] = Field(None, title='pageId')
-    sectionGroupName: Optional[str] = Field(None, title='sectionGroupName')
-    sectionGroupPriority: Optional[str] = Field(None, title='sectionGroupPriority')
-    sectionName: Optional[str] = Field(None, title='sectionName')
-    sectionPriority: Optional[str] = Field(None, title='sectionPriority')
-    sourceName: Optional[str] = Field(None, title='sourceName')
-    sourceUrl: Optional[str] = Field(None, title='sourceUrl')
+    aoDevNotes: Optional[str] = Field(None, title="aoDevNotes")
+    archived: bool = Field(..., title="archived")
+    health: Optional[Health2] = Field(None, title="health")
+    hostedBy: Optional[HostedBy2] = Field(None, title="hostedBy")
+    keywords: Optional[str] = Field(None, title="keywords")
+    layerMetaData: Optional[LayerMetaData2] = Field(None, title="layerMetaData")
+    layerSortPriority: Optional[str] = Field(None, title="layerSortPriority")
+    managedBy: ManagedBy2 = Field(..., title="managedBy")
+    pageId: Optional[str] = Field(None, title="pageId")
+    sectionGroupName: Optional[str] = Field(None, title="sectionGroupName")
+    sectionGroupPriority: Optional[str] = Field(None, title="sectionGroupPriority")
+    sectionName: Optional[str] = Field(None, title="sectionName")
+    sectionPriority: Optional[str] = Field(None, title="sectionPriority")
+    sourceName: Optional[str] = Field(None, title="sourceName")
+    sourceUrl: Optional[str] = Field(None, title="sourceUrl")
 
 
 class AoLegendConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    data: Optional[Any] = Field(None, title='data')
-    enabled: bool = Field(..., title='enabled')
-    url: Optional[str] = Field(None, title='url')
+    data: Optional[Any] = Field(None, title="data")
+    enabled: bool = Field(..., title="enabled")
+    url: Optional[str] = Field(None, title="url")
 
 
 class AoLoaderConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    credentials: bool = Field(..., title='credentials')
-    unzip: bool = Field(..., title='unzip')
-    urlInterpolation: bool = Field(..., title='urlInterpolation')
+    credentials: bool = Field(..., title="credentials")
+    unzip: bool = Field(..., title="unzip")
+    urlInterpolation: bool = Field(..., title="urlInterpolation")
 
 
 class OlClass1(Enum):
-    AoMVT = 'AoMVT'
+    AoMVT = "AoMVT"
 
 
 class AoMVTConfig(BaseModel):
@@ -321,55 +321,61 @@ class AoMVTConfig(BaseModel):
 
     geometryName: Optional[str] = Field(
         None,
-        description='Geometry name to use when creating features.',
-        title='geometryName',
+        description="Geometry name to use when creating features.",
+        title="geometryName",
     )
     idProperty: Optional[str] = Field(
         None,
-        description='Optional property that will be assigned as the feature id and removed from the properties.\nlayers.',
-        title='idProperty',
+        description=(
+            "Optional property that will be assigned as the feature id and removed from"
+            " the properties.\nlayers."
+        ),
+        title="idProperty",
     )
     layerName: Optional[str] = Field(
         None,
-        description='Name of the feature attribute that holds the layer name.',
-        title='layerName',
+        description="Name of the feature attribute that holds the layer name.",
+        title="layerName",
     )
     layers: Optional[List[str]] = Field(
         None,
-        description='Layers to read features from. If not provided, features will be read from all',
-        title='layers',
+        description=(
+            "Layers to read features from. If not provided, features will be read"
+            " from all"
+        ),
+        title="layers",
     )
-    olClass: OlClass1 = Field(..., title='olClass')
+    olClass: OlClass1 = Field(..., title="olClass")
 
 
 class Type6(Enum):
-    polygon_select_local = 'polygon-select:local'
+    polygon_select_local = "polygon-select:local"
 
 
 class AoPolygonSelectLocalConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    enabled: bool = Field(..., title='enabled')
-    type: Type6 = Field(..., title='type')
+    enabled: bool = Field(..., title="enabled")
+    type: Type6 = Field(..., title="type")
 
 
 class Type7(Enum):
-    polygon_select_remote = 'polygon-select:remote'
+    polygon_select_remote = "polygon-select:remote"
 
 
 class Renderer(Enum):
-    BaaRenderer = 'BaaRenderer'
-    TeamRenderer = 'TeamRenderer'
+    BaaRenderer = "BaaRenderer"
+    TeamRenderer = "TeamRenderer"
 
 
 class AoStyleConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    predefined: Optional[str] = Field(None, title='predefined')
-    renderer: Optional[Renderer] = Field(None, title='renderer')
-    static: Optional[Any] = Field(None, title='static')
+    predefined: Optional[str] = Field(None, title="predefined")
+    renderer: Optional[Renderer] = Field(None, title="renderer")
+    static: Optional[Any] = Field(None, title="static")
 
 
 class BuildOptions(BaseModel):
@@ -380,40 +386,40 @@ class ColumnRef(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    key: str = Field(..., title='key')
-    name: Optional[str] = Field(None, title='name')
+    key: str = Field(..., title="key")
+    name: Optional[str] = Field(None, title="name")
 
 
 class CustomMappingRecord(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    aoPath: str = Field(..., title='aoPath')
-    fromPath: str = Field(..., title='fromPath')
+    aoPath: str = Field(..., title="aoPath")
+    fromPath: str = Field(..., title="fromPath")
 
 
 class Style(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    fillColor: Optional[str] = Field(None, title='fillColor')
-    fillOpacity: Optional[str] = Field(None, title='fillOpacity')
-    strokeColor: Optional[str] = Field(None, title='strokeColor')
-    strokeOpacity: Optional[str] = Field(None, title='strokeOpacity')
-    strokeWeight: Optional[str] = Field(None, title='strokeWeight')
-    zIndex: Optional[float] = Field(None, title='zIndex')
+    fillColor: Optional[str] = Field(None, title="fillColor")
+    fillOpacity: Optional[str] = Field(None, title="fillOpacity")
+    strokeColor: Optional[str] = Field(None, title="strokeColor")
+    strokeOpacity: Optional[str] = Field(None, title="strokeOpacity")
+    strokeWeight: Optional[str] = Field(None, title="strokeWeight")
+    zIndex: Optional[float] = Field(None, title="zIndex")
 
 
 class DrawingElement(BaseModel):
     class Config:
         extra = Extra.allow
 
-    style: Optional[Style] = Field(None, title='style')
-    wkt: str = Field(..., title='wkt')
+    style: Optional[Style] = Field(None, title="style")
+    wkt: str = Field(..., title="wkt")
 
 
 class OlClass2(Enum):
-    EsriJSON = 'EsriJSON'
+    EsriJSON = "EsriJSON"
 
 
 class EsriJSONConfig(BaseModel):
@@ -422,14 +428,14 @@ class EsriJSONConfig(BaseModel):
 
     geometryName: Optional[str] = Field(
         None,
-        description='Geometry name to use when creating features.',
-        title='geometryName',
+        description="Geometry name to use when creating features.",
+        title="geometryName",
     )
-    olClass: OlClass2 = Field(..., title='olClass')
+    olClass: OlClass2 = Field(..., title="olClass")
 
 
 class OlClass3(Enum):
-    GeoJSON = 'GeoJSON'
+    GeoJSON = "GeoJSON"
 
 
 class GeoJSONConfig(BaseModel):
@@ -437,67 +443,75 @@ class GeoJSONConfig(BaseModel):
         extra = Extra.forbid
 
     dataProjection: Optional[str] = Field(
-        None, description='Default data projection.', title='dataProjection'
+        None, description="Default data projection.", title="dataProjection"
     )
     extractGeometryName: Optional[bool] = Field(
         None,
-        description='Certain GeoJSON providers include\nthe geometry_name field in the feature GeoJSON. If set to `true` the GeoJSON reader\nwill look for that field to set the geometry name. If both this field is set to `true`\nand a `geometryName` is provided, the `geometryName` will take precedence.',
-        title='extractGeometryName',
+        description=(
+            "Certain GeoJSON providers include\nthe geometry_name field in the feature"
+            " GeoJSON. If set to `true` the GeoJSON reader\nwill look for that field to"
+            " set the geometry name. If both this field is set to `true`\nand a"
+            " `geometryName` is provided, the `geometryName` will take precedence."
+        ),
+        title="extractGeometryName",
     )
     featureProjection: Optional[str] = Field(
         None,
-        description='Projection for features read or\nwritten by the format.  Options passed to read or write methods will take precedence.',
-        title='featureProjection',
+        description=(
+            "Projection for features read or\nwritten by the format.  Options passed to"
+            " read or write methods will take precedence."
+        ),
+        title="featureProjection",
     )
     geometryName: Optional[str] = Field(
         None,
-        description='Geometry name to use when creating features.',
-        title='geometryName',
+        description="Geometry name to use when creating features.",
+        title="geometryName",
     )
-    olClass: OlClass3 = Field(..., title='olClass')
+    olClass: OlClass3 = Field(..., title="olClass")
 
 
 class GoogleStyle(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    fillColor: Optional[str] = Field(None, title='fillColor')
-    fillOpacity: Optional[str] = Field(None, title='fillOpacity')
-    strokeColor: Optional[str] = Field(None, title='strokeColor')
-    strokeOpacity: Optional[str] = Field(None, title='strokeOpacity')
-    strokeWeight: Optional[str] = Field(None, title='strokeWeight')
-    zIndex: Optional[float] = Field(None, title='zIndex')
+    fillColor: Optional[str] = Field(None, title="fillColor")
+    fillOpacity: Optional[str] = Field(None, title="fillOpacity")
+    strokeColor: Optional[str] = Field(None, title="strokeColor")
+    strokeOpacity: Optional[str] = Field(None, title="strokeOpacity")
+    strokeWeight: Optional[str] = Field(None, title="strokeWeight")
+    zIndex: Optional[float] = Field(None, title="zIndex")
 
 
 class Status3(Enum):
-    ERROR = 'ERROR'
-    MAINTENANCE = 'MAINTENANCE'
-    OK = 'OK'
+    ERROR = "ERROR"
+    MAINTENANCE = "MAINTENANCE"
+    OK = "OK"
 
 
 class HealthCheckData(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    lastCheckTime: float = Field(..., title='lastCheckTime')
-    message: str = Field(..., title='message')
-    status: Status3 = Field(..., title='status')
+    lastCheckTime: float = Field(..., title="lastCheckTime")
+    message: str = Field(..., title="message")
+    status: Status3 = Field(..., title="status")
 
 
 class OlClass4(Enum):
-    ImageArcGISRest = 'ImageArcGISRest'
+    ImageArcGISRest = "ImageArcGISRest"
 
 
 class OlClass5(Enum):
-    ImageLayer = 'ImageLayer'
+    ImageLayer = "ImageLayer"
 
 
 class OlClass6(Enum):
-    ImageWMS = 'ImageWMS'
+    ImageWMS = "ImageWMS"
 
 
 class OlClass7(Enum):
-    KMZ = 'KMZ'
+    KMZ = "KMZ"
 
 
 class KMZConfig(BaseModel):
@@ -506,57 +520,65 @@ class KMZConfig(BaseModel):
 
     crossOrigin: Optional[Optional[str]] = Field(
         None,
-        description='The `crossOrigin` attribute for loaded images. Note that you must provide a\n`crossOrigin` value if you want to access pixel data with the Canvas renderer.',
-        title='crossOrigin',
+        description=(
+            "The `crossOrigin` attribute for loaded images. Note that you must provide"
+            " a\n`crossOrigin` value if you want to access pixel data with the Canvas"
+            " renderer."
+        ),
+        title="crossOrigin",
     )
     extractStyles: Optional[bool] = Field(
-        None, description='Extract styles from the KML.', title='extractStyles'
+        None, description="Extract styles from the KML.", title="extractStyles"
     )
     iconUrlFunction: Optional[Dict[str, Any]] = Field(
         None,
-        description='A function that takes a url `{string}` and returns a url `{string}`.\nMight be used to change an icon path or to substitute a\ndata url obtained from a KMZ array buffer.',
-        title='iconUrlFunction',
+        description=(
+            "A function that takes a url `{string}` and returns a url"
+            " `{string}`.\nMight be used to change an icon path or to substitute"
+            " a\ndata url obtained from a KMZ array buffer."
+        ),
+        title="iconUrlFunction",
     )
-    olClass: OlClass7 = Field(..., title='olClass')
+    olClass: OlClass7 = Field(..., title="olClass")
     showPointNames: Optional[bool] = Field(
         None,
-        description='Show names as labels for placemarks which contain points.',
-        title='showPointNames',
+        description="Show names as labels for placemarks which contain points.",
+        title="showPointNames",
     )
     writeStyles: Optional[bool] = Field(
-        None, description='Write styles into KML.', title='writeStyles'
+        None, description="Write styles into KML.", title="writeStyles"
     )
 
 
 class LayerGroupType(Enum):
-    layer_group = 'layer-group'
+    layer_group = "layer-group"
 
 
 class DataCategory3(Enum):
-    Engineering = 'Engineering'
-    Other = 'Other'
-    Permitting = 'Permitting'
-    Real_Estate = 'Real Estate'
+    Engineering = "Engineering"
+    Other = "Other"
+    Permitting = "Permitting"
+    Real_Estate = "Real Estate"
 
 
 class LayerMetaData3(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    comments: str = Field(..., title='comments')
-    dataCategory: Optional[DataCategory3] = Field(None, title='dataCategory')
-    dateOfStudy: float = Field(..., title='dateOfStudy')
-    generationCapacity: float = Field(..., title='generationCapacity')
+    comments: str = Field(..., title="comments")
+    dataCategory: Optional[DataCategory3] = Field(None, title="dataCategory")
+    dateOfStudy: float = Field(..., title="dateOfStudy")
+    generationCapacity: float = Field(..., title="generationCapacity")
 
 
 class LayerOmitList(Enum):
-    background = 'background'
-    map = 'map'
-    properties = 'properties'
-    renderOrder = 'renderOrder'
-    source = 'source'
-    strategy = 'strategy'
-    style = 'style'
+    background = "background"
+    map = "map"
+    properties = "properties"
+    renderOrder = "renderOrder"
+    source = "source"
+    strategy = "strategy"
+    style = "style"
 
 
 class LayerOptionConfig(BaseModel):
@@ -570,11 +592,11 @@ class LayerOptionToggleConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    enabled: bool = Field(..., title='enabled')
+    enabled: bool = Field(..., title="enabled")
 
 
 class OlClass8(Enum):
-    MVT = 'MVT'
+    MVT = "MVT"
 
 
 class MVTConfig(BaseModel):
@@ -583,25 +605,31 @@ class MVTConfig(BaseModel):
 
     geometryName: Optional[str] = Field(
         None,
-        description='Geometry name to use when creating features.',
-        title='geometryName',
+        description="Geometry name to use when creating features.",
+        title="geometryName",
     )
     idProperty: Optional[str] = Field(
         None,
-        description='Optional property that will be assigned as the feature id and removed from the properties.\nlayers.',
-        title='idProperty',
+        description=(
+            "Optional property that will be assigned as the feature id and removed from"
+            " the properties.\nlayers."
+        ),
+        title="idProperty",
     )
     layerName: Optional[str] = Field(
         None,
-        description='Name of the feature attribute that holds the layer name.',
-        title='layerName',
+        description="Name of the feature attribute that holds the layer name.",
+        title="layerName",
     )
     layers: Optional[List[str]] = Field(
         None,
-        description='Layers to read features from. If not provided, features will be read from all',
-        title='layers',
+        description=(
+            "Layers to read features from. If not provided, features will be read"
+            " from all"
+        ),
+        title="layers",
     )
-    olClass: OlClass8 = Field(..., title='olClass')
+    olClass: OlClass8 = Field(..., title="olClass")
 
 
 class ProjectionId(BaseModel):
@@ -616,55 +644,71 @@ class RecordStringStringNumber(BaseModel):
 
 
 class SourceOmitList(Enum):
-    features = 'features'
-    format = 'format'
-    imageLoadFunction = 'imageLoadFunction'
-    loader = 'loader'
-    tileClass = 'tileClass'
-    tileGrid = 'tileGrid'
-    tileLoadFunction = 'tileLoadFunction'
-    tileUrlFunction = 'tileUrlFunction'
-    zDirection = 'zDirection'
+    features = "features"
+    format = "format"
+    imageLoadFunction = "imageLoadFunction"
+    loader = "loader"
+    tileClass = "tileClass"
+    tileGrid = "tileGrid"
+    tileLoadFunction = "tileLoadFunction"
+    tileUrlFunction = "tileUrlFunction"
+    zDirection = "zDirection"
 
 
 class OlClass9(Enum):
-    TileArcGISRest = 'TileArcGISRest'
+    TileArcGISRest = "TileArcGISRest"
 
 
 class TileArcGISRestConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    arcServerType: Optional[str] = Field(None, title='arcServerType')
+    arcServerType: Optional[str] = Field(None, title="arcServerType")
     attributions: Optional[Union[List[str], Dict[str, Any], str]] = Field(
-        None, description='Attributions.', title='attributions'
+        None, description="Attributions.", title="attributions"
     )
     cacheSize: Optional[float] = Field(
         None,
-        description='Initial tile cache size. Will auto-grow to hold at least the number of tiles in the viewport.',
-        title='cacheSize',
+        description=(
+            "Initial tile cache size. Will auto-grow to hold at least the number of"
+            " tiles in the viewport."
+        ),
+        title="cacheSize",
     )
     crossOrigin: Optional[Optional[str]] = Field(
         None,
-        description='The `crossOrigin` attribute for loaded images.  Note that\nyou must provide a `crossOrigin` value if you want to access pixel data with the Canvas renderer.\nSee https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.',
-        title='crossOrigin',
+        description=(
+            "The `crossOrigin` attribute for loaded images.  Note that\nyou must"
+            " provide a `crossOrigin` value if you want to access pixel data with the"
+            " Canvas renderer.\nSee"
+            " https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for"
+            " more detail."
+        ),
+        title="crossOrigin",
     )
     hidpi: Optional[bool] = Field(
         None,
-        description='Use the `ol/Map#pixelRatio` value when requesting\nthe image from the remote server.',
-        title='hidpi',
+        description=(
+            "Use the `ol/Map#pixelRatio` value when requesting\nthe image from the"
+            " remote server."
+        ),
+        title="hidpi",
     )
     imageSmoothing: Optional[bool] = Field(
         None,
-        description='Deprecated.  Use the `interpolate` option instead.',
-        title='imageSmoothing',
+        description="Deprecated.  Use the `interpolate` option instead.",
+        title="imageSmoothing",
     )
     interpolate: Optional[bool] = Field(
         None,
-        description='Use interpolated values when resampling.  By default,\nlinear interpolation is used when resampling.  Set to false to use the nearest neighbor instead.',
-        title='interpolate',
+        description=(
+            "Use interpolated values when resampling.  By default,\nlinear"
+            " interpolation is used when resampling.  Set to false to use the nearest"
+            " neighbor instead."
+        ),
+        title="interpolate",
     )
-    olClass: OlClass9 = Field(..., title='olClass')
+    olClass: OlClass9 = Field(..., title="olClass")
     olFormat: Optional[
         Union[
             EsriJSONConfig,
@@ -674,39 +718,63 @@ class TileArcGISRestConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
+    ] = Field(None, title="olFormat")
     params: Optional[Dict[str, Any]] = Field(
         None,
-        description='ArcGIS Rest parameters. This field is optional. Service defaults will be\nused for any fields not specified. `FORMAT` is `PNG32` by default. `F` is `IMAGE` by\ndefault. `TRANSPARENT` is `true` by default.  `BBOX`, `SIZE`, `BBOXSR`,\nand `IMAGESR` will be set dynamically. Set `LAYERS` to\noverride the default service layer visibility. See\nhttps://developers.arcgis.com/rest/services-reference/export-map.htm\nfor further reference.',
-        title='params',
+        description=(
+            "ArcGIS Rest parameters. This field is optional. Service defaults will"
+            " be\nused for any fields not specified. `FORMAT` is `PNG32` by default."
+            " `F` is `IMAGE` by\ndefault. `TRANSPARENT` is `true` by default.  `BBOX`,"
+            " `SIZE`, `BBOXSR`,\nand `IMAGESR` will be set dynamically. Set `LAYERS`"
+            " to\noverride the default service layer visibility."
+            " See\nhttps://developers.arcgis.com/rest/services-reference/export-map.htm\nfor"
+            " further reference."
+        ),
+        title="params",
     )
     projection: Optional[str] = Field(
         None,
-        description='Projection. Default is the view projection.\nThe projection code must contain a numeric end portion separated by :\nor the entire code must form a valid ArcGIS SpatialReference definition.',
-        title='projection',
+        description=(
+            "Projection. Default is the view projection.\nThe projection code must"
+            " contain a numeric end portion separated by :\nor the entire code must"
+            " form a valid ArcGIS SpatialReference definition."
+        ),
+        title="projection",
     )
     reprojectionErrorThreshold: Optional[float] = Field(
         None,
-        description='Maximum allowed reprojection error (in pixels).\nHigher values can increase reprojection performance, but decrease precision.',
-        title='reprojectionErrorThreshold',
+        description=(
+            "Maximum allowed reprojection error (in pixels).\nHigher values can"
+            " increase reprojection performance, but decrease precision."
+        ),
+        title="reprojectionErrorThreshold",
     )
     transition: Optional[float] = Field(
         None,
-        description='Duration of the opacity transition for rendering.  To disable the opacity\ntransition, pass `transition: 0`.',
-        title='transition',
+        description=(
+            "Duration of the opacity transition for rendering.  To disable the"
+            " opacity\ntransition, pass `transition: 0`."
+        ),
+        title="transition",
     )
     url: Optional[str] = Field(
         None,
-        description='ArcGIS Rest service URL for a Map Service or Image Service. The\nurl should include /MapServer or /ImageServer.',
-        title='url',
+        description=(
+            "ArcGIS Rest service URL for a Map Service or Image Service. The\nurl"
+            " should include /MapServer or /ImageServer."
+        ),
+        title="url",
     )
     urls: Optional[List[str]] = Field(
         None,
-        description='ArcGIS Rest service urls. Use this instead of `url` when the ArcGIS\nService supports multiple urls for export requests.',
-        title='urls',
+        description=(
+            "ArcGIS Rest service urls. Use this instead of `url` when the"
+            " ArcGIS\nService supports multiple urls for export requests."
+        ),
+        title="urls",
     )
     wrapX: Optional[bool] = Field(
-        None, description='Whether to wrap the world horizontally.', title='wrapX'
+        None, description="Whether to wrap the world horizontally.", title="wrapX"
     )
 
 
@@ -716,50 +784,80 @@ class TileGridConfig(BaseModel):
 
     extent: Optional[List[float]] = Field(
         None,
-        description='An array of numbers representing an extent: `[minx, miny, maxx, maxy]`.',
-        title='extent',
+        description=(
+            "An array of numbers representing an extent: `[minx, miny, maxx, maxy]`."
+        ),
+        title="extent",
     )
     matrixIds: List[str] = Field(
         ...,
-        description='matrix IDs. The length of this array needs\nto match the length of the `resolutions` array.',
-        title='matrixIds',
+        description=(
+            "matrix IDs. The length of this array needs\nto match the length of the"
+            " `resolutions` array."
+        ),
+        title="matrixIds",
     )
     origin: Optional[List[float]] = Field(
         None,
-        description='An array of numbers representing an xy coordinate. Example: `[16, 48]`.',
-        title='origin',
+        description=(
+            "An array of numbers representing an xy coordinate. Example: `[16, 48]`."
+        ),
+        title="origin",
     )
     origins: Optional[List[List[float]]] = Field(
         None,
-        description='Tile grid origins,\ni.e. where the `x` and `y` axes meet (`[z, 0, 0]`), for each zoom level. If\ngiven, the array length should match the length of the `resolutions` array, i.e.\neach resolution can have a different origin. Tile coordinates increase left to\nright and downwards. If not specified, `extent` or `origin` must be provided.',
-        title='origins',
+        description=(
+            "Tile grid origins,\ni.e. where the `x` and `y` axes meet (`[z, 0, 0]`),"
+            " for each zoom level. If\ngiven, the array length should match the length"
+            " of the `resolutions` array, i.e.\neach resolution can have a different"
+            " origin. Tile coordinates increase left to\nright and downwards. If not"
+            " specified, `extent` or `origin` must be provided."
+        ),
+        title="origins",
     )
     resolutions: List[float] = Field(
         ...,
-        description='Resolutions. The array index of each\nresolution needs to match the zoom level. This means that even if a `minZoom`\nis configured, the resolutions array will have a length of `maxZoom + 1`',
-        title='resolutions',
+        description=(
+            "Resolutions. The array index of each\nresolution needs to match the zoom"
+            " level. This means that even if a `minZoom`\nis configured, the"
+            " resolutions array will have a length of `maxZoom + 1`"
+        ),
+        title="resolutions",
     )
     sizes: Optional[List[List[float]]] = Field(
         None,
-        description="Number of tile rows and columns\nof the grid for each zoom level. The values here are the `TileMatrixWidth` and\n`TileMatrixHeight` advertised in the GetCapabilities response of the WMTS, and\ndefine each zoom level's extent together with the `origin` or `origins`.\nA grid `extent` can be configured in addition, and will further limit the extent for\nwhich tile requests are made by sources. If the bottom-left corner of\nan extent is used as `origin` or `origins`, then the `y` value must be\nnegative because OpenLayers tile coordinates use the top left as the origin.",
-        title='sizes',
+        description=(
+            "Number of tile rows and columns\nof the grid for each zoom level. The"
+            " values here are the `TileMatrixWidth` and\n`TileMatrixHeight` advertised"
+            " in the GetCapabilities response of the WMTS, and\ndefine each zoom"
+            " level's extent together with the `origin` or `origins`.\nA grid `extent`"
+            " can be configured in addition, and will further limit the extent"
+            " for\nwhich tile requests are made by sources. If the bottom-left corner"
+            " of\nan extent is used as `origin` or `origins`, then the `y` value must"
+            " be\nnegative because OpenLayers tile coordinates use the top left as the"
+            " origin."
+        ),
+        title="sizes",
     )
     tileSize: Optional[Union[List[float], float]] = Field(
-        None, description='Tile size.', title='tileSize'
+        None, description="Tile size.", title="tileSize"
     )
     tileSizes: Optional[List[List[float]]] = Field(
         None,
-        description='Tile sizes. The length of\nthis array needs to match the length of the `resolutions` array.',
-        title='tileSizes',
+        description=(
+            "Tile sizes. The length of\nthis array needs to match the length of the"
+            " `resolutions` array."
+        ),
+        title="tileSizes",
     )
 
 
 class OlClass10(Enum):
-    TileLayer = 'TileLayer'
+    TileLayer = "TileLayer"
 
 
 class OlClass11(Enum):
-    TileWMS = 'TileWMS'
+    TileWMS = "TileWMS"
 
 
 class TileWMSConfig(BaseModel):
@@ -767,44 +865,70 @@ class TileWMSConfig(BaseModel):
         extra = Extra.forbid
 
     attributions: Optional[Union[List[str], Dict[str, Any], str]] = Field(
-        None, description='Attributions.', title='attributions'
+        None, description="Attributions.", title="attributions"
     )
     attributionsCollapsible: Optional[bool] = Field(
         None,
-        description='Attributions are collapsible.',
-        title='attributionsCollapsible',
+        description="Attributions are collapsible.",
+        title="attributionsCollapsible",
     )
     cacheSize: Optional[float] = Field(
         None,
-        description='Initial tile cache size. Will auto-grow to hold at least the number of tiles in the viewport.',
-        title='cacheSize',
+        description=(
+            "Initial tile cache size. Will auto-grow to hold at least the number of"
+            " tiles in the viewport."
+        ),
+        title="cacheSize",
     )
     crossOrigin: Optional[Optional[str]] = Field(
         None,
-        description='The `crossOrigin` attribute for loaded images.  Note that\nyou must provide a `crossOrigin` value if you want to access pixel data with the Canvas renderer.\nSee https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.',
-        title='crossOrigin',
+        description=(
+            "The `crossOrigin` attribute for loaded images.  Note that\nyou must"
+            " provide a `crossOrigin` value if you want to access pixel data with the"
+            " Canvas renderer.\nSee"
+            " https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for"
+            " more detail."
+        ),
+        title="crossOrigin",
     )
     gutter: Optional[float] = Field(
         None,
-        description='The size in pixels of the gutter around image tiles to ignore. By setting\nthis property to a non-zero value, images will be requested that are wider\nand taller than the tile size by a value of `2 x gutter`.\nUsing a non-zero value allows artifacts of rendering at tile edges to be\nignored. If you control the WMS service it is recommended to address\n"artifacts at tile edges" issues by properly configuring the WMS service. For\nexample, MapServer has a `tile_map_edge_buffer` configuration parameter for\nthis. See https://mapserver.org/output/tile_mode.html.',
-        title='gutter',
+        description=(
+            "The size in pixels of the gutter around image tiles to ignore. By"
+            " setting\nthis property to a non-zero value, images will be requested that"
+            " are wider\nand taller than the tile size by a value of `2 x"
+            " gutter`.\nUsing a non-zero value allows artifacts of rendering at tile"
+            " edges to be\nignored. If you control the WMS service it is recommended to"
+            ' address\n"artifacts at tile edges" issues by properly configuring the WMS'
+            " service. For\nexample, MapServer has a `tile_map_edge_buffer`"
+            " configuration parameter for\nthis. See"
+            " https://mapserver.org/output/tile_mode.html."
+        ),
+        title="gutter",
     )
     hidpi: Optional[bool] = Field(
         None,
-        description='Use the `ol/Map#pixelRatio` value when requesting\nthe image from the remote server.',
-        title='hidpi',
+        description=(
+            "Use the `ol/Map#pixelRatio` value when requesting\nthe image from the"
+            " remote server."
+        ),
+        title="hidpi",
     )
     imageSmoothing: Optional[bool] = Field(
         None,
-        description='Deprecated.  Use the `interpolate` option instead.',
-        title='imageSmoothing',
+        description="Deprecated.  Use the `interpolate` option instead.",
+        title="imageSmoothing",
     )
     interpolate: Optional[bool] = Field(
         None,
-        description='Use interpolated values when resampling.  By default,\nlinear interpolation is used when resampling.  Set to false to use the nearest neighbor instead.',
-        title='interpolate',
+        description=(
+            "Use interpolated values when resampling.  By default,\nlinear"
+            " interpolation is used when resampling.  Set to false to use the nearest"
+            " neighbor instead."
+        ),
+        title="interpolate",
     )
-    olClass: OlClass11 = Field(..., title='olClass')
+    olClass: OlClass11 = Field(..., title="olClass")
     olFormat: Optional[
         Union[
             EsriJSONConfig,
@@ -814,51 +938,73 @@ class TileWMSConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
+    ] = Field(None, title="olFormat")
     params: Dict[str, Any] = Field(
         ...,
-        description="WMS request parameters.\nAt least a `LAYERS` param is required. `STYLES` is\n`''` by default. `VERSION` is `1.3.0` by default. `WIDTH`, `HEIGHT`, `BBOX`\nand `CRS` (`SRS` for WMS version < 1.3.0) will be set dynamically.",
-        title='params',
+        description=(
+            "WMS request parameters.\nAt least a `LAYERS` param is required. `STYLES`"
+            " is\n`''` by default. `VERSION` is `1.3.0` by default. `WIDTH`, `HEIGHT`,"
+            " `BBOX`\nand `CRS` (`SRS` for WMS version < 1.3.0) will be set"
+            " dynamically."
+        ),
+        title="params",
     )
     projection: Optional[str] = Field(
         None,
-        description='Projection. Default is the view projection.',
-        title='projection',
+        description="Projection. Default is the view projection.",
+        title="projection",
     )
     reprojectionErrorThreshold: Optional[float] = Field(
         None,
-        description='Maximum allowed reprojection error (in pixels).\nHigher values can increase reprojection performance, but decrease precision.',
-        title='reprojectionErrorThreshold',
+        description=(
+            "Maximum allowed reprojection error (in pixels).\nHigher values can"
+            " increase reprojection performance, but decrease precision."
+        ),
+        title="reprojectionErrorThreshold",
     )
     serverType: Optional[Any] = Field(
         None,
-        description='The type of the remote WMS server. Currently only used when `hidpi` is\n`true`.',
-        title='serverType',
+        description=(
+            "The type of the remote WMS server. Currently only used when `hidpi`"
+            " is\n`true`."
+        ),
+        title="serverType",
     )
     transition: Optional[float] = Field(
         None,
-        description='Duration of the opacity transition for rendering.\nTo disable the opacity transition, pass `transition: 0`.',
-        title='transition',
+        description=(
+            "Duration of the opacity transition for rendering.\nTo disable the opacity"
+            " transition, pass `transition: 0`."
+        ),
+        title="transition",
     )
-    url: Optional[str] = Field(None, description='WMS service URL.', title='url')
+    url: Optional[str] = Field(None, description="WMS service URL.", title="url")
     urls: Optional[List[str]] = Field(
         None,
-        description='WMS service urls.\nUse this instead of `url` when the WMS supports multiple urls for GetMap requests.',
-        title='urls',
+        description=(
+            "WMS service urls.\nUse this instead of `url` when the WMS supports"
+            " multiple urls for GetMap requests."
+        ),
+        title="urls",
     )
     wrapX: Optional[bool] = Field(
         None,
-        description='Whether to wrap the world horizontally.\nWhen set to `false`, only one world\nwill be rendered. When `true`, tiles will be requested for one world only,\nbut they will be wrapped horizontally to render multiple worlds.',
-        title='wrapX',
+        description=(
+            "Whether to wrap the world horizontally.\nWhen set to `false`, only one"
+            " world\nwill be rendered. When `true`, tiles will be requested for one"
+            " world only,\nbut they will be wrapped horizontally to render multiple"
+            " worlds."
+        ),
+        title="wrapX",
     )
 
 
 class OlClass12(Enum):
-    VectorLayer = 'VectorLayer'
+    VectorLayer = "VectorLayer"
 
 
 class OlClass13(Enum):
-    VectorSource = 'VectorSource'
+    VectorSource = "VectorSource"
 
 
 class VectorSourceConfig(BaseModel):
@@ -866,9 +1012,9 @@ class VectorSourceConfig(BaseModel):
         extra = Extra.forbid
 
     attributions: Optional[Union[List[str], Dict[str, Any], str]] = Field(
-        None, description='Attributions.', title='attributions'
+        None, description="Attributions.", title="attributions"
     )
-    olClass: OlClass13 = Field(..., title='olClass')
+    olClass: OlClass13 = Field(..., title="olClass")
     olFormat: Optional[
         Union[
             EsriJSONConfig,
@@ -878,41 +1024,84 @@ class VectorSourceConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
+    ] = Field(None, title="olFormat")
     overlaps: Optional[bool] = Field(
         None,
-        description='This source may have overlapping geometries.\nSetting this to `false` (e.g. for sources with polygons that represent administrative\nboundaries or TopoJSON sources) allows the renderer to optimise fill and\nstroke operations.',
-        title='overlaps',
+        description=(
+            "This source may have overlapping geometries.\nSetting this to `false`"
+            " (e.g. for sources with polygons that represent administrative\nboundaries"
+            " or TopoJSON sources) allows the renderer to optimise fill and\nstroke"
+            " operations."
+        ),
+        title="overlaps",
     )
-    projection: Optional[str] = Field(None, title='projection')
+    projection: Optional[str] = Field(None, title="projection")
     strategy: Optional[Dict[str, Any]] = Field(
         None,
-        description='A function that takes an {@link module:ol/extent~Extent} and a resolution as arguments, and\nreturns an array of {@link module:ol/extent~Extent} with the extents to load. Usually this\nis one of the standard {@link module:ol/loadingstrategy} strategies.',
-        title='strategy',
+        description=(
+            "A function that takes an {@link module:ol/extent~Extent} and a resolution"
+            " as arguments, and\nreturns an array of {@link module:ol/extent~Extent}"
+            " with the extents to load. Usually this\nis one of the standard {@link"
+            " module:ol/loadingstrategy} strategies."
+        ),
+        title="strategy",
     )
     url: Optional[Union[Dict[str, Any], str]] = Field(
         None,
-        description='Setting this option instructs the source to load features using an XHR loader\n(see {@link module:ol/featureloader.xhr}). Use a `string` and an\n{@link module:ol/loadingstrategy.all} for a one-off download of all features from\nthe given URL. Use a {@link module:ol/featureloader~FeatureUrlFunction} to generate the url with\nother loading strategies.\nRequires `format` to be set as well.\nWhen default XHR feature loader is provided, the features will\nbe transformed from the data projection to the view projection\nduring parsing. If your remote data source does not advertise its projection\nproperly, this transformation will be incorrect. For some formats, the\ndefault projection (usually EPSG:4326) can be overridden by setting the\ndataProjection constructor option on the format.\nNote that if a source contains non-feature data, such as a GeoJSON geometry\nor a KML NetworkLink, these will be ignored. Use a custom loader to load these.',
-        title='url',
+        description=(
+            "Setting this option instructs the source to load features using an XHR"
+            " loader\n(see {@link module:ol/featureloader.xhr}). Use a `string` and"
+            " an\n{@link module:ol/loadingstrategy.all} for a one-off download of all"
+            " features from\nthe given URL. Use a {@link"
+            " module:ol/featureloader~FeatureUrlFunction} to generate the url"
+            " with\nother loading strategies.\nRequires `format` to be set as"
+            " well.\nWhen default XHR feature loader is provided, the features will\nbe"
+            " transformed from the data projection to the view projection\nduring"
+            " parsing. If your remote data source does not advertise its"
+            " projection\nproperly, this transformation will be incorrect. For some"
+            " formats, the\ndefault projection (usually EPSG:4326) can be overridden by"
+            " setting the\ndataProjection constructor option on the format.\nNote that"
+            " if a source contains non-feature data, such as a GeoJSON geometry\nor a"
+            " KML NetworkLink, these will be ignored. Use a custom loader to load"
+            " these."
+        ),
+        title="url",
     )
     useSpatialIndex: Optional[bool] = Field(
         None,
-        description='By default, an RTree is used as spatial index. When features are removed and\nadded frequently, and the total number of features is low, setting this to\n`false` may improve performance.\n\nNote that\n{@link module:ol/source/Vector~VectorSource#getFeaturesInExtent},\n{@link module:ol/source/Vector~VectorSource#getClosestFeatureToCoordinate} and\n{@link module:ol/source/Vector~VectorSource#getExtent} cannot be used when `useSpatialIndex` is\nset to `false`, and {@link module:ol/source/Vector~VectorSource#forEachFeatureInExtent} will loop\nthrough all features.\n\nWhen set to `false`, the features will be maintained in an\n{@link module:ol/Collection~Collection}, which can be retrieved through\n{@link module:ol/source/Vector~VectorSource#getFeaturesCollection}.',
-        title='useSpatialIndex',
+        description=(
+            "By default, an RTree is used as spatial index. When features are removed"
+            " and\nadded frequently, and the total number of features is low, setting"
+            " this to\n`false` may improve performance.\n\nNote that\n{@link"
+            " module:ol/source/Vector~VectorSource#getFeaturesInExtent},\n{@link"
+            " module:ol/source/Vector~VectorSource#getClosestFeatureToCoordinate}"
+            " and\n{@link module:ol/source/Vector~VectorSource#getExtent} cannot be"
+            " used when `useSpatialIndex` is\nset to `false`, and {@link"
+            " module:ol/source/Vector~VectorSource#forEachFeatureInExtent} will"
+            " loop\nthrough all features.\n\nWhen set to `false`, the features will be"
+            " maintained in an\n{@link module:ol/Collection~Collection}, which can be"
+            " retrieved through\n{@link"
+            " module:ol/source/Vector~VectorSource#getFeaturesCollection}."
+        ),
+        title="useSpatialIndex",
     )
     wrapX: Optional[bool] = Field(
         None,
-        description='Wrap the world horizontally. For vector editing across the\n-180° and 180° meridians to work properly, this should be set to `false`. The\nresulting geometry coordinates will then exceed the world bounds.',
-        title='wrapX',
+        description=(
+            "Wrap the world horizontally. For vector editing across the\n-180° and 180°"
+            " meridians to work properly, this should be set to `false`. The\nresulting"
+            " geometry coordinates will then exceed the world bounds."
+        ),
+        title="wrapX",
     )
 
 
 class OlClass14(Enum):
-    VectorTileLayer = 'VectorTileLayer'
+    VectorTileLayer = "VectorTileLayer"
 
 
 class OlClass15(Enum):
-    VectorTileSource = 'VectorTileSource'
+    VectorTileSource = "VectorTileSource"
 
 
 class VectorTileSourceConfig(BaseModel):
@@ -920,39 +1109,47 @@ class VectorTileSourceConfig(BaseModel):
         extra = Extra.forbid
 
     attributions: Optional[Union[List[str], Dict[str, Any], str]] = Field(
-        None, description='Attributions.', title='attributions'
+        None, description="Attributions.", title="attributions"
     )
     attributionsCollapsible: Optional[bool] = Field(
         None,
-        description='Attributions are collapsible.',
-        title='attributionsCollapsible',
+        description="Attributions are collapsible.",
+        title="attributionsCollapsible",
     )
     cacheSize: Optional[float] = Field(
         None,
-        description='Initial tile cache size. Will auto-grow to hold at least twice the number of tiles in the viewport.',
-        title='cacheSize',
+        description=(
+            "Initial tile cache size. Will auto-grow to hold at least twice the number"
+            " of tiles in the viewport."
+        ),
+        title="cacheSize",
     )
     extent: Optional[List[float]] = Field(
         None,
-        description='An array of numbers representing an extent: `[minx, miny, maxx, maxy]`.',
-        title='extent',
+        description=(
+            "An array of numbers representing an extent: `[minx, miny, maxx, maxy]`."
+        ),
+        title="extent",
     )
     maxResolution: Optional[float] = Field(
         None,
-        description='Optional tile grid resolution at level zero. Not used if `tileGrid` is provided.',
-        title='maxResolution',
+        description=(
+            "Optional tile grid resolution at level zero. Not used if `tileGrid` is"
+            " provided."
+        ),
+        title="maxResolution",
     )
     maxZoom: Optional[float] = Field(
         None,
-        description='Optional max zoom level. Not used if `tileGrid` is provided.',
-        title='maxZoom',
+        description="Optional max zoom level. Not used if `tileGrid` is provided.",
+        title="maxZoom",
     )
     minZoom: Optional[float] = Field(
         None,
-        description='Optional min zoom level. Not used if `tileGrid` is provided.',
-        title='minZoom',
+        description="Optional min zoom level. Not used if `tileGrid` is provided.",
+        title="minZoom",
     )
-    olClass: OlClass15 = Field(..., title='olClass')
+    olClass: OlClass15 = Field(..., title="olClass")
     olFormat: Optional[
         Union[
             EsriJSONConfig,
@@ -962,43 +1159,60 @@ class VectorTileSourceConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
+    ] = Field(None, title="olFormat")
     overlaps: Optional[bool] = Field(
         None,
-        description='This source may have overlapping geometries. Setting this\nto `false` (e.g. for sources with polygons that represent administrative\nboundaries or TopoJSON sources) allows the renderer to optimise fill and\nstroke operations.',
-        title='overlaps',
+        description=(
+            "This source may have overlapping geometries. Setting this\nto `false`"
+            " (e.g. for sources with polygons that represent administrative\nboundaries"
+            " or TopoJSON sources) allows the renderer to optimise fill and\nstroke"
+            " operations."
+        ),
+        title="overlaps",
     )
     projection: Optional[str] = Field(
-        None, description='Projection of the tile grid.', title='projection'
+        None, description="Projection of the tile grid.", title="projection"
     )
-    state: Optional[Any] = Field(None, description='Source state.', title='state')
+    state: Optional[Any] = Field(None, description="Source state.", title="state")
     tileSize: Optional[Union[List[float], float]] = Field(
         None,
-        description='Optional tile size. Not used if `tileGrid` is provided.',
-        title='tileSize',
+        description="Optional tile size. Not used if `tileGrid` is provided.",
+        title="tileSize",
     )
     transition: Optional[float] = Field(
         None,
-        description='A duration for tile opacity\ntransitions in milliseconds. A duration of 0 disables the opacity transition.',
-        title='transition',
+        description=(
+            "A duration for tile opacity\ntransitions in milliseconds. A duration of 0"
+            " disables the opacity transition."
+        ),
+        title="transition",
     )
     url: Optional[str] = Field(
         None,
-        description='URL template. Must include `{x}`, `{y}` or `{-y}`, and `{z}` placeholders.\nA `{?-?}` template pattern, for example `subdomain{a-f}.domain.com`, may be\nused instead of defining each one separately in the `urls` option.',
-        title='url',
+        description=(
+            "URL template. Must include `{x}`, `{y}` or `{-y}`, and `{z}`"
+            " placeholders.\nA `{?-?}` template pattern, for example"
+            " `subdomain{a-f}.domain.com`, may be\nused instead of defining each one"
+            " separately in the `urls` option."
+        ),
+        title="url",
     )
     urls: Optional[List[str]] = Field(
-        None, description='An array of URL templates.', title='urls'
+        None, description="An array of URL templates.", title="urls"
     )
     wrapX: Optional[bool] = Field(
         None,
-        description='Whether to wrap the world horizontally.\nWhen set to `false`, only one world\nwill be rendered. When set to `true`, tiles will be wrapped horizontally to\nrender multiple worlds.',
-        title='wrapX',
+        description=(
+            "Whether to wrap the world horizontally.\nWhen set to `false`, only one"
+            " world\nwill be rendered. When set to `true`, tiles will be wrapped"
+            " horizontally to\nrender multiple worlds."
+        ),
+        title="wrapX",
     )
 
 
 class OlClass16(Enum):
-    WMTS = 'WMTS'
+    WMTS = "WMTS"
 
 
 class OlTileGrid(BaseModel):
@@ -1007,41 +1221,71 @@ class OlTileGrid(BaseModel):
 
     extent: Optional[List[float]] = Field(
         None,
-        description='An array of numbers representing an extent: `[minx, miny, maxx, maxy]`.',
-        title='extent',
+        description=(
+            "An array of numbers representing an extent: `[minx, miny, maxx, maxy]`."
+        ),
+        title="extent",
     )
     matrixIds: List[str] = Field(
         ...,
-        description='matrix IDs. The length of this array needs\nto match the length of the `resolutions` array.',
-        title='matrixIds',
+        description=(
+            "matrix IDs. The length of this array needs\nto match the length of the"
+            " `resolutions` array."
+        ),
+        title="matrixIds",
     )
     origin: Optional[List[float]] = Field(
         None,
-        description='An array of numbers representing an xy coordinate. Example: `[16, 48]`.',
-        title='origin',
+        description=(
+            "An array of numbers representing an xy coordinate. Example: `[16, 48]`."
+        ),
+        title="origin",
     )
     origins: Optional[List[List[float]]] = Field(
         None,
-        description='Tile grid origins,\ni.e. where the `x` and `y` axes meet (`[z, 0, 0]`), for each zoom level. If\ngiven, the array length should match the length of the `resolutions` array, i.e.\neach resolution can have a different origin. Tile coordinates increase left to\nright and downwards. If not specified, `extent` or `origin` must be provided.',
-        title='origins',
+        description=(
+            "Tile grid origins,\ni.e. where the `x` and `y` axes meet (`[z, 0, 0]`),"
+            " for each zoom level. If\ngiven, the array length should match the length"
+            " of the `resolutions` array, i.e.\neach resolution can have a different"
+            " origin. Tile coordinates increase left to\nright and downwards. If not"
+            " specified, `extent` or `origin` must be provided."
+        ),
+        title="origins",
     )
     resolutions: List[float] = Field(
         ...,
-        description='Resolutions. The array index of each\nresolution needs to match the zoom level. This means that even if a `minZoom`\nis configured, the resolutions array will have a length of `maxZoom + 1`',
-        title='resolutions',
+        description=(
+            "Resolutions. The array index of each\nresolution needs to match the zoom"
+            " level. This means that even if a `minZoom`\nis configured, the"
+            " resolutions array will have a length of `maxZoom + 1`"
+        ),
+        title="resolutions",
     )
     sizes: Optional[List[List[float]]] = Field(
         None,
-        description="Number of tile rows and columns\nof the grid for each zoom level. The values here are the `TileMatrixWidth` and\n`TileMatrixHeight` advertised in the GetCapabilities response of the WMTS, and\ndefine each zoom level's extent together with the `origin` or `origins`.\nA grid `extent` can be configured in addition, and will further limit the extent for\nwhich tile requests are made by sources. If the bottom-left corner of\nan extent is used as `origin` or `origins`, then the `y` value must be\nnegative because OpenLayers tile coordinates use the top left as the origin.",
-        title='sizes',
+        description=(
+            "Number of tile rows and columns\nof the grid for each zoom level. The"
+            " values here are the `TileMatrixWidth` and\n`TileMatrixHeight` advertised"
+            " in the GetCapabilities response of the WMTS, and\ndefine each zoom"
+            " level's extent together with the `origin` or `origins`.\nA grid `extent`"
+            " can be configured in addition, and will further limit the extent"
+            " for\nwhich tile requests are made by sources. If the bottom-left corner"
+            " of\nan extent is used as `origin` or `origins`, then the `y` value must"
+            " be\nnegative because OpenLayers tile coordinates use the top left as the"
+            " origin."
+        ),
+        title="sizes",
     )
     tileSize: Optional[Union[List[float], float]] = Field(
-        None, description='Tile size.', title='tileSize'
+        None, description="Tile size.", title="tileSize"
     )
     tileSizes: Optional[List[List[float]]] = Field(
         None,
-        description='Tile sizes. The length of\nthis array needs to match the length of the `resolutions` array.',
-        title='tileSizes',
+        description=(
+            "Tile sizes. The length of\nthis array needs to match the length of the"
+            " `resolutions` array."
+        ),
+        title="tileSizes",
     )
 
 
@@ -1050,45 +1294,61 @@ class WMTSConfig(BaseModel):
         extra = Extra.forbid
 
     attributions: Optional[Union[List[str], Dict[str, Any], str]] = Field(
-        None, description='Attributions.', title='attributions'
+        None, description="Attributions.", title="attributions"
     )
     attributionsCollapsible: Optional[bool] = Field(
         None,
-        description='Attributions are collapsible.',
-        title='attributionsCollapsible',
+        description="Attributions are collapsible.",
+        title="attributionsCollapsible",
     )
     cacheSize: Optional[float] = Field(
         None,
-        description='Initial tile cache size. Will auto-grow to hold at least the number of tiles in the viewport.',
-        title='cacheSize',
+        description=(
+            "Initial tile cache size. Will auto-grow to hold at least the number of"
+            " tiles in the viewport."
+        ),
+        title="cacheSize",
     )
     crossOrigin: Optional[Optional[str]] = Field(
         None,
-        description='The `crossOrigin` attribute for loaded images.  Note that\nyou must provide a `crossOrigin` value if you want to access pixel data with the Canvas renderer.\nSee https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.',
-        title='crossOrigin',
+        description=(
+            "The `crossOrigin` attribute for loaded images.  Note that\nyou must"
+            " provide a `crossOrigin` value if you want to access pixel data with the"
+            " Canvas renderer.\nSee"
+            " https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for"
+            " more detail."
+        ),
+        title="crossOrigin",
     )
     dimensions: Optional[Any] = Field(
         None,
-        description='Additional "dimensions" for tile requests.\nThis is an object with properties named like the advertised WMTS dimensions.',
-        title='dimensions',
+        description=(
+            'Additional "dimensions" for tile requests.\nThis is an object with'
+            " properties named like the advertised WMTS dimensions."
+        ),
+        title="dimensions",
     )
     imageSmoothing: Optional[bool] = Field(
         None,
-        description='Deprecated.  Use the `interpolate` option instead.',
-        title='imageSmoothing',
+        description="Deprecated.  Use the `interpolate` option instead.",
+        title="imageSmoothing",
     )
     interpolate: Optional[bool] = Field(
         None,
-        description='Use interpolated values when resampling.  By default,\nlinear interpolation is used when resampling.  Set to false to use the nearest neighbor instead.',
-        title='interpolate',
+        description=(
+            "Use interpolated values when resampling.  By default,\nlinear"
+            " interpolation is used when resampling.  Set to false to use the nearest"
+            " neighbor instead."
+        ),
+        title="interpolate",
     )
     layer: str = Field(
         ...,
-        description='Layer name as advertised in the WMTS capabilities.',
-        title='layer',
+        description="Layer name as advertised in the WMTS capabilities.",
+        title="layer",
     )
-    matrixSet: str = Field(..., description='Matrix set.', title='matrixSet')
-    olClass: OlClass16 = Field(..., title='olClass')
+    matrixSet: str = Field(..., description="Matrix set.", title="matrixSet")
+    olClass: OlClass16 = Field(..., title="olClass")
     olFormat: Optional[
         Union[
             EsriJSONConfig,
@@ -1098,50 +1358,69 @@ class WMTSConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
-    olTileGrid: OlTileGrid = Field(..., title='olTileGrid')
+    ] = Field(None, title="olFormat")
+    olTileGrid: OlTileGrid = Field(..., title="olTileGrid")
     projection: Optional[str] = Field(
         None,
-        description='Projection. Default is the view projection.',
-        title='projection',
+        description="Projection. Default is the view projection.",
+        title="projection",
     )
     reprojectionErrorThreshold: Optional[float] = Field(
         None,
-        description='Maximum allowed reprojection error (in pixels).\nHigher values can increase reprojection performance, but decrease precision.',
-        title='reprojectionErrorThreshold',
+        description=(
+            "Maximum allowed reprojection error (in pixels).\nHigher values can"
+            " increase reprojection performance, but decrease precision."
+        ),
+        title="reprojectionErrorThreshold",
     )
     requestEncoding: Optional[Any] = Field(
-        None, description='Request encoding.', title='requestEncoding'
+        None, description="Request encoding.", title="requestEncoding"
     )
-    style: Optional[str] = Field(None, title='style')
+    style: Optional[str] = Field(None, title="style")
     tilePixelRatio: Optional[float] = Field(
         None,
-        description='The pixel ratio used by the tile service.\nFor example, if the tile service advertizes 256px by 256px tiles but actually sends 512px\nby 512px images (for retina/hidpi devices) then `tilePixelRatio`\nshould be set to `2`.',
-        title='tilePixelRatio',
+        description=(
+            "The pixel ratio used by the tile service.\nFor example, if the tile"
+            " service advertizes 256px by 256px tiles but actually sends 512px\nby"
+            " 512px images (for retina/hidpi devices) then `tilePixelRatio`\nshould be"
+            " set to `2`."
+        ),
+        title="tilePixelRatio",
     )
     transition: Optional[float] = Field(
         None,
-        description='Duration of the opacity transition for rendering.\nTo disable the opacity transition, pass `transition: 0`.',
-        title='transition',
+        description=(
+            "Duration of the opacity transition for rendering.\nTo disable the opacity"
+            " transition, pass `transition: 0`."
+        ),
+        title="transition",
     )
     url: Optional[str] = Field(
         None,
-        description='A URL for the service.\nFor the RESTful request encoding, this is a URL\ntemplate.  For KVP encoding, it is normal URL. A `{?-?}` template pattern,\nfor example `subdomain{a-f}.domain.com`, may be used instead of defining\neach one separately in the `urls` option.',
-        title='url',
+        description=(
+            "A URL for the service.\nFor the RESTful request encoding, this is a"
+            " URL\ntemplate.  For KVP encoding, it is normal URL. A `{?-?}` template"
+            " pattern,\nfor example `subdomain{a-f}.domain.com`, may be used instead of"
+            " defining\neach one separately in the `urls` option."
+        ),
+        title="url",
     )
     urls: Optional[List[str]] = Field(
         None,
-        description='An array of URLs.\nRequests will be distributed among the URLs in this array.',
-        title='urls',
+        description=(
+            "An array of URLs.\nRequests will be distributed among the URLs in this"
+            " array."
+        ),
+        title="urls",
     )
-    version: Optional[str] = Field(None, description='WMTS version.', title='version')
+    version: Optional[str] = Field(None, description="WMTS version.", title="version")
     wrapX: Optional[bool] = Field(
-        None, description='Whether to wrap the world horizontally.', title='wrapX'
+        None, description="Whether to wrap the world horizontally.", title="wrapX"
     )
 
 
 class OlClass17(Enum):
-    XYZ = 'XYZ'
+    XYZ = "XYZ"
 
 
 class XYZConfig(BaseModel):
@@ -1149,49 +1428,65 @@ class XYZConfig(BaseModel):
         extra = Extra.forbid
 
     attributions: Optional[Union[List[str], Dict[str, Any], str]] = Field(
-        None, description='Attributions.', title='attributions'
+        None, description="Attributions.", title="attributions"
     )
     attributionsCollapsible: Optional[bool] = Field(
         None,
-        description='Attributions are collapsible.',
-        title='attributionsCollapsible',
+        description="Attributions are collapsible.",
+        title="attributionsCollapsible",
     )
     cacheSize: Optional[float] = Field(
         None,
-        description='Initial tile cache size. Will auto-grow to hold at least the number of tiles in the viewport.',
-        title='cacheSize',
+        description=(
+            "Initial tile cache size. Will auto-grow to hold at least the number of"
+            " tiles in the viewport."
+        ),
+        title="cacheSize",
     )
     crossOrigin: Optional[Optional[str]] = Field(
         None,
-        description='The `crossOrigin` attribute for loaded images.  Note that\nyou must provide a `crossOrigin` value if you want to access pixel data with the Canvas renderer.\nSee https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.',
-        title='crossOrigin',
+        description=(
+            "The `crossOrigin` attribute for loaded images.  Note that\nyou must"
+            " provide a `crossOrigin` value if you want to access pixel data with the"
+            " Canvas renderer.\nSee"
+            " https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for"
+            " more detail."
+        ),
+        title="crossOrigin",
     )
     imageSmoothing: Optional[bool] = Field(
         None,
-        description='Deprecated.  Use the `interpolate` option instead.',
-        title='imageSmoothing',
+        description="Deprecated.  Use the `interpolate` option instead.",
+        title="imageSmoothing",
     )
     interpolate: Optional[bool] = Field(
         None,
-        description='Use interpolated values when resampling.  By default,\nlinear interpolation is used when resampling.  Set to false to use the nearest neighbor instead.',
-        title='interpolate',
+        description=(
+            "Use interpolated values when resampling.  By default,\nlinear"
+            " interpolation is used when resampling.  Set to false to use the nearest"
+            " neighbor instead."
+        ),
+        title="interpolate",
     )
     maxResolution: Optional[float] = Field(
         None,
-        description='Optional tile grid resolution at level zero. Not used if `tileGrid` is provided.',
-        title='maxResolution',
+        description=(
+            "Optional tile grid resolution at level zero. Not used if `tileGrid` is"
+            " provided."
+        ),
+        title="maxResolution",
     )
     maxZoom: Optional[float] = Field(
         None,
-        description='Optional max zoom level. Not used if `tileGrid` is provided.',
-        title='maxZoom',
+        description="Optional max zoom level. Not used if `tileGrid` is provided.",
+        title="maxZoom",
     )
     minZoom: Optional[float] = Field(
         None,
-        description='Optional min zoom level. Not used if `tileGrid` is provided.',
-        title='minZoom',
+        description="Optional min zoom level. Not used if `tileGrid` is provided.",
+        title="minZoom",
     )
-    olClass: OlClass17 = Field(..., title='olClass')
+    olClass: OlClass17 = Field(..., title="olClass")
     olFormat: Optional[
         Union[
             EsriJSONConfig,
@@ -1201,43 +1496,62 @@ class XYZConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
+    ] = Field(None, title="olFormat")
     opaque: Optional[bool] = Field(
-        None, description='Whether the layer is opaque.', title='opaque'
+        None, description="Whether the layer is opaque.", title="opaque"
     )
     projection: Optional[str] = Field(
-        None, description='Projection.', title='projection'
+        None, description="Projection.", title="projection"
     )
     reprojectionErrorThreshold: Optional[float] = Field(
         None,
-        description='Maximum allowed reprojection error (in pixels).\nHigher values can increase reprojection performance, but decrease precision.',
-        title='reprojectionErrorThreshold',
+        description=(
+            "Maximum allowed reprojection error (in pixels).\nHigher values can"
+            " increase reprojection performance, but decrease precision."
+        ),
+        title="reprojectionErrorThreshold",
     )
     tilePixelRatio: Optional[float] = Field(
         None,
-        description='The pixel ratio used by the tile service.\nFor example, if the tile service advertizes 256px by 256px tiles but actually sends 512px\nby 512px images (for retina/hidpi devices) then `tilePixelRatio`\nshould be set to `2`.',
-        title='tilePixelRatio',
+        description=(
+            "The pixel ratio used by the tile service.\nFor example, if the tile"
+            " service advertizes 256px by 256px tiles but actually sends 512px\nby"
+            " 512px images (for retina/hidpi devices) then `tilePixelRatio`\nshould be"
+            " set to `2`."
+        ),
+        title="tilePixelRatio",
     )
     tileSize: Optional[Union[List[float], float]] = Field(
         None,
-        description='The tile size used by the tile service.\nNot used if `tileGrid` is provided.',
-        title='tileSize',
+        description=(
+            "The tile size used by the tile service.\nNot used if `tileGrid` is"
+            " provided."
+        ),
+        title="tileSize",
     )
     transition: Optional[float] = Field(
         None,
-        description='Duration of the opacity transition for rendering.\nTo disable the opacity transition, pass `transition: 0`.',
-        title='transition',
+        description=(
+            "Duration of the opacity transition for rendering.\nTo disable the opacity"
+            " transition, pass `transition: 0`."
+        ),
+        title="transition",
     )
     url: Optional[str] = Field(
         None,
-        description='URL template. Must include `{x}`, `{y}` or `{-y}`,\nand `{z}` placeholders. A `{?-?}` template pattern, for example `subdomain{a-f}.domain.com`,\nmay be used instead of defining each one separately in the `urls` option.',
-        title='url',
+        description=(
+            "URL template. Must include `{x}`, `{y}` or `{-y}`,\nand `{z}`"
+            " placeholders. A `{?-?}` template pattern, for example"
+            " `subdomain{a-f}.domain.com`,\nmay be used instead of defining each one"
+            " separately in the `urls` option."
+        ),
+        title="url",
     )
     urls: Optional[List[str]] = Field(
-        None, description='An array of URL templates.', title='urls'
+        None, description="An array of URL templates.", title="urls"
     )
     wrapX: Optional[bool] = Field(
-        None, description='Whether to wrap the world horizontally.', title='wrapX'
+        None, description="Whether to wrap the world horizontally.", title="wrapX"
     )
 
 
@@ -1245,13 +1559,13 @@ class AoClickRemoteConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    allowAllZooms: Optional[bool] = Field(None, title='allowAllZooms')
-    data: Optional[Any] = Field(None, title='data')
-    enabled: bool = Field(..., title='enabled')
-    factory: Optional[str] = Field(None, title='factory')
-    format: Optional[str] = Field(None, title='format')
-    hitTolerance: Optional[float] = Field(None, title='hitTolerance')
-    mergeOnField: Optional[str] = Field(None, title='mergeOnField')
+    allowAllZooms: Optional[bool] = Field(None, title="allowAllZooms")
+    data: Optional[Any] = Field(None, title="data")
+    enabled: bool = Field(..., title="enabled")
+    factory: Optional[str] = Field(None, title="factory")
+    format: Optional[str] = Field(None, title="format")
+    hitTolerance: Optional[float] = Field(None, title="hitTolerance")
+    mergeOnField: Optional[str] = Field(None, title="mergeOnField")
     olFormat: Optional[
         Union[
             EsriJSONConfig,
@@ -1261,29 +1575,29 @@ class AoClickRemoteConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
+    ] = Field(None, title="olFormat")
     queryStringParams: Optional[RecordStringStringNumber] = Field(
-        None, title='queryStringParams'
+        None, title="queryStringParams"
     )
-    responseName: Optional[str] = Field(None, title='responseName')
-    type: Type2 = Field(..., title='type')
-    url: Optional[str] = Field(None, title='url')
-    urlEnd: Optional[str] = Field(None, title='urlEnd')
-    urlStart: Optional[str] = Field(None, title='urlStart')
-    zoomLevel: Optional[float] = Field(None, title='zoomLevel')
+    responseName: Optional[str] = Field(None, title="responseName")
+    type: Type2 = Field(..., title="type")
+    url: Optional[str] = Field(None, title="url")
+    urlEnd: Optional[str] = Field(None, title="urlEnd")
+    urlStart: Optional[str] = Field(None, title="urlStart")
+    zoomLevel: Optional[float] = Field(None, title="zoomLevel")
 
 
 class AoClickRemoteMapServerConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    allowAllZooms: Optional[bool] = Field(None, title='allowAllZooms')
-    data: Optional[Any] = Field(None, title='data')
-    enabled: bool = Field(..., title='enabled')
-    factory: Optional[str] = Field(None, title='factory')
-    format: Optional[str] = Field(None, title='format')
-    hitTolerance: Optional[float] = Field(None, title='hitTolerance')
-    mergeOnField: Optional[str] = Field(None, title='mergeOnField')
+    allowAllZooms: Optional[bool] = Field(None, title="allowAllZooms")
+    data: Optional[Any] = Field(None, title="data")
+    enabled: bool = Field(..., title="enabled")
+    factory: Optional[str] = Field(None, title="factory")
+    format: Optional[str] = Field(None, title="format")
+    hitTolerance: Optional[float] = Field(None, title="hitTolerance")
+    mergeOnField: Optional[str] = Field(None, title="mergeOnField")
     olFormat: Optional[
         Union[
             EsriJSONConfig,
@@ -1293,29 +1607,29 @@ class AoClickRemoteMapServerConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
+    ] = Field(None, title="olFormat")
     queryStringParams: Optional[RecordStringStringNumber] = Field(
-        None, title='queryStringParams'
+        None, title="queryStringParams"
     )
-    responseName: Optional[str] = Field(None, title='responseName')
-    type: Type3 = Field(..., title='type')
-    url: Optional[str] = Field(None, title='url')
-    urlEnd: Optional[str] = Field(None, title='urlEnd')
-    urlStart: Optional[str] = Field(None, title='urlStart')
-    zoomLevel: Optional[float] = Field(None, title='zoomLevel')
+    responseName: Optional[str] = Field(None, title="responseName")
+    type: Type3 = Field(..., title="type")
+    url: Optional[str] = Field(None, title="url")
+    urlEnd: Optional[str] = Field(None, title="urlEnd")
+    urlStart: Optional[str] = Field(None, title="urlStart")
+    zoomLevel: Optional[float] = Field(None, title="zoomLevel")
 
 
 class AoClickRemoteWMSConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    allowAllZooms: Optional[bool] = Field(None, title='allowAllZooms')
-    data: Optional[Any] = Field(None, title='data')
-    enabled: bool = Field(..., title='enabled')
-    factory: Optional[str] = Field(None, title='factory')
-    format: Optional[str] = Field(None, title='format')
-    hitTolerance: Optional[float] = Field(None, title='hitTolerance')
-    mergeOnField: Optional[str] = Field(None, title='mergeOnField')
+    allowAllZooms: Optional[bool] = Field(None, title="allowAllZooms")
+    data: Optional[Any] = Field(None, title="data")
+    enabled: bool = Field(..., title="enabled")
+    factory: Optional[str] = Field(None, title="factory")
+    format: Optional[str] = Field(None, title="format")
+    hitTolerance: Optional[float] = Field(None, title="hitTolerance")
+    mergeOnField: Optional[str] = Field(None, title="mergeOnField")
     olFormat: Optional[
         Union[
             EsriJSONConfig,
@@ -1325,41 +1639,41 @@ class AoClickRemoteWMSConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
+    ] = Field(None, title="olFormat")
     queryStringParams: Optional[RecordStringStringNumber] = Field(
-        None, title='queryStringParams'
+        None, title="queryStringParams"
     )
-    responseName: Optional[str] = Field(None, title='responseName')
-    type: Type4 = Field(..., title='type')
-    url: Optional[str] = Field(None, title='url')
-    urlEnd: Optional[str] = Field(None, title='urlEnd')
-    urlStart: Optional[str] = Field(None, title='urlStart')
-    zoomLevel: Optional[float] = Field(None, title='zoomLevel')
+    responseName: Optional[str] = Field(None, title="responseName")
+    type: Type4 = Field(..., title="type")
+    url: Optional[str] = Field(None, title="url")
+    urlEnd: Optional[str] = Field(None, title="urlEnd")
+    urlStart: Optional[str] = Field(None, title="urlStart")
+    zoomLevel: Optional[float] = Field(None, title="zoomLevel")
 
 
 class AoColumnConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    geometry: Optional[str] = Field(None, title='geometry')
-    ignore: Optional[List[str]] = Field(None, title='ignore')
-    link: Optional[List[str]] = Field(None, title='link')
-    name: Optional[str] = Field(None, title='name')
-    showProperty: Optional[str] = Field(None, title='showProperty')
-    summary: Optional[List[ColumnRef]] = Field(None, title='summary')
-    table: Optional[str] = Field(None, title='table')
+    geometry: Optional[str] = Field(None, title="geometry")
+    ignore: Optional[List[str]] = Field(None, title="ignore")
+    link: Optional[List[str]] = Field(None, title="link")
+    name: Optional[str] = Field(None, title="name")
+    showProperty: Optional[str] = Field(None, title="showProperty")
+    summary: Optional[List[ColumnRef]] = Field(None, title="summary")
+    table: Optional[str] = Field(None, title="table")
 
 
 class AoCreateConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    defaultObj: Any = Field(..., title='defaultObj')
-    enabled: bool = Field(..., title='enabled')
-    includeSource: Optional[bool] = Field(None, title='includeSource')
-    limit: Optional[float] = Field(None, title='limit')
-    mapping: AoCreateMappingConfig = Field(..., title='mapping')
-    parser: Parser = Field(..., title='parser')
+    defaultObj: Any = Field(..., title="defaultObj")
+    enabled: bool = Field(..., title="enabled")
+    includeSource: Optional[bool] = Field(None, title="includeSource")
+    limit: Optional[float] = Field(None, title="limit")
+    mapping: AoCreateMappingConfig = Field(..., title="mapping")
+    parser: Parser = Field(..., title="parser")
 
 
 class AoFormatConfig(BaseModel):
@@ -1386,18 +1700,18 @@ class AoNetworkBaseConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
+    ] = Field(None, title="olFormat")
     queryStringParams: Optional[RecordStringStringNumber] = Field(
-        None, title='queryStringParams'
+        None, title="queryStringParams"
     )
-    url: Optional[str] = Field(None, title='url')
+    url: Optional[str] = Field(None, title="url")
 
 
 class AoPolygonSelectRemoteConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    enabled: bool = Field(..., title='enabled')
+    enabled: bool = Field(..., title="enabled")
     olFormat: Optional[
         Union[
             EsriJSONConfig,
@@ -1407,12 +1721,12 @@ class AoPolygonSelectRemoteConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
+    ] = Field(None, title="olFormat")
     queryStringParams: Optional[RecordStringStringNumber] = Field(
-        None, title='queryStringParams'
+        None, title="queryStringParams"
     )
-    type: Type7 = Field(..., title='type')
-    url: Optional[str] = Field(None, title='url')
+    type: Type7 = Field(..., title="type")
+    url: Optional[str] = Field(None, title="url")
 
 
 class AoTileLayerSourceConfig(BaseModel):
@@ -1423,31 +1737,44 @@ class ImageArcGISRestConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    arcServerType: Optional[str] = Field(None, title='arcServerType')
+    arcServerType: Optional[str] = Field(None, title="arcServerType")
     attributions: Optional[Union[List[str], Dict[str, Any], str]] = Field(
-        None, description='Attributions.', title='attributions'
+        None, description="Attributions.", title="attributions"
     )
     crossOrigin: Optional[Optional[str]] = Field(
         None,
-        description='The `crossOrigin` attribute for loaded images.  Note that\nyou must provide a `crossOrigin` value if you want to access pixel data with the Canvas renderer.\nSee https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.',
-        title='crossOrigin',
+        description=(
+            "The `crossOrigin` attribute for loaded images.  Note that\nyou must"
+            " provide a `crossOrigin` value if you want to access pixel data with the"
+            " Canvas renderer.\nSee"
+            " https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for"
+            " more detail."
+        ),
+        title="crossOrigin",
     )
     hidpi: Optional[bool] = Field(
         None,
-        description='Use the `ol/Map#pixelRatio` value when requesting the image from\nthe remote server.',
-        title='hidpi',
+        description=(
+            "Use the `ol/Map#pixelRatio` value when requesting the image from\nthe"
+            " remote server."
+        ),
+        title="hidpi",
     )
     imageSmoothing: Optional[bool] = Field(
         None,
-        description='Deprecated.  Use the `interpolate` option instead.',
-        title='imageSmoothing',
+        description="Deprecated.  Use the `interpolate` option instead.",
+        title="imageSmoothing",
     )
     interpolate: Optional[bool] = Field(
         None,
-        description='Use interpolated values when resampling.  By default,\nlinear interpolation is used when resampling.  Set to false to use the nearest neighbor instead.',
-        title='interpolate',
+        description=(
+            "Use interpolated values when resampling.  By default,\nlinear"
+            " interpolation is used when resampling.  Set to false to use the nearest"
+            " neighbor instead."
+        ),
+        title="interpolate",
     )
-    olClass: OlClass4 = Field(..., title='olClass')
+    olClass: OlClass4 = Field(..., title="olClass")
     olFormat: Optional[
         Union[
             EsriJSONConfig,
@@ -1457,31 +1784,52 @@ class ImageArcGISRestConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
+    ] = Field(None, title="olFormat")
     params: Optional[Dict[str, Any]] = Field(
         None,
-        description='ArcGIS Rest parameters. This field is optional. Service\ndefaults will be used for any fields not specified. `FORMAT` is `PNG32` by default. `F` is\n`IMAGE` by default. `TRANSPARENT` is `true` by default.  `BBOX`, `SIZE`, `BBOXSR`, and `IMAGESR`\nwill be set dynamically. Set `LAYERS` to override the default service layer visibility. See\nhttps://developers.arcgis.com/rest/services-reference/export-map.htm\nfor further reference.',
-        title='params',
+        description=(
+            "ArcGIS Rest parameters. This field is optional. Service\ndefaults will be"
+            " used for any fields not specified. `FORMAT` is `PNG32` by default. `F`"
+            " is\n`IMAGE` by default. `TRANSPARENT` is `true` by default.  `BBOX`,"
+            " `SIZE`, `BBOXSR`, and `IMAGESR`\nwill be set dynamically. Set `LAYERS` to"
+            " override the default service layer visibility."
+            " See\nhttps://developers.arcgis.com/rest/services-reference/export-map.htm\nfor"
+            " further reference."
+        ),
+        title="params",
     )
     projection: Optional[str] = Field(
         None,
-        description='Projection. Default is the view projection.\nThe projection code must contain a numeric end portion separated by :\nor the entire code must form a valid ArcGIS SpatialReference definition.',
-        title='projection',
+        description=(
+            "Projection. Default is the view projection.\nThe projection code must"
+            " contain a numeric end portion separated by :\nor the entire code must"
+            " form a valid ArcGIS SpatialReference definition."
+        ),
+        title="projection",
     )
     ratio: Optional[float] = Field(
         None,
-        description='Ratio. `1` means image requests are the size of the map viewport,\n`2` means twice the size of the map viewport, and so on.',
-        title='ratio',
+        description=(
+            "Ratio. `1` means image requests are the size of the map viewport,\n`2`"
+            " means twice the size of the map viewport, and so on."
+        ),
+        title="ratio",
     )
     resolutions: Optional[List[float]] = Field(
         None,
-        description='Resolutions. If specified, requests will be made for\nthese resolutions only.',
-        title='resolutions',
+        description=(
+            "Resolutions. If specified, requests will be made for\nthese resolutions"
+            " only."
+        ),
+        title="resolutions",
     )
     url: Optional[str] = Field(
         None,
-        description='ArcGIS Rest service URL for a Map Service or Image Service. The url\nshould include /MapServer or /ImageServer.',
-        title='url',
+        description=(
+            "ArcGIS Rest service URL for a Map Service or Image Service. The"
+            " url\nshould include /MapServer or /ImageServer."
+        ),
+        title="url",
     )
 
 
@@ -1490,29 +1838,42 @@ class ImageWMSConfig(BaseModel):
         extra = Extra.forbid
 
     attributions: Optional[Union[List[str], Dict[str, Any], str]] = Field(
-        None, description='Attributions.', title='attributions'
+        None, description="Attributions.", title="attributions"
     )
     crossOrigin: Optional[Optional[str]] = Field(
         None,
-        description='The `crossOrigin` attribute for loaded images.  Note that\nyou must provide a `crossOrigin` value if you want to access pixel data with the Canvas renderer.\nSee https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for more detail.',
-        title='crossOrigin',
+        description=(
+            "The `crossOrigin` attribute for loaded images.  Note that\nyou must"
+            " provide a `crossOrigin` value if you want to access pixel data with the"
+            " Canvas renderer.\nSee"
+            " https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image for"
+            " more detail."
+        ),
+        title="crossOrigin",
     )
     hidpi: Optional[bool] = Field(
         None,
-        description='Use the `ol/Map#pixelRatio` value when requesting\nthe image from the remote server.',
-        title='hidpi',
+        description=(
+            "Use the `ol/Map#pixelRatio` value when requesting\nthe image from the"
+            " remote server."
+        ),
+        title="hidpi",
     )
     imageSmoothing: Optional[bool] = Field(
         None,
-        description='Deprecated.  Use the `interpolate` option instead.',
-        title='imageSmoothing',
+        description="Deprecated.  Use the `interpolate` option instead.",
+        title="imageSmoothing",
     )
     interpolate: Optional[bool] = Field(
         None,
-        description='Use interpolated values when resampling.  By default,\nlinear interpolation is used when resampling.  Set to false to use the nearest neighbor instead.',
-        title='interpolate',
+        description=(
+            "Use interpolated values when resampling.  By default,\nlinear"
+            " interpolation is used when resampling.  Set to false to use the nearest"
+            " neighbor instead."
+        ),
+        title="interpolate",
     )
-    olClass: OlClass6 = Field(..., title='olClass')
+    olClass: OlClass6 = Field(..., title="olClass")
     olFormat: Optional[
         Union[
             EsriJSONConfig,
@@ -1522,33 +1883,48 @@ class ImageWMSConfig(BaseModel):
             AoDrawingConfig,
             KMZConfig,
         ]
-    ] = Field(None, title='olFormat')
+    ] = Field(None, title="olFormat")
     params: Dict[str, Any] = Field(
         ...,
-        description="WMS request parameters.\nAt least a `LAYERS` param is required. `STYLES` is\n`''` by default. `VERSION` is `1.3.0` by default. `WIDTH`, `HEIGHT`, `BBOX`\nand `CRS` (`SRS` for WMS version < 1.3.0) will be set dynamically.",
-        title='params',
+        description=(
+            "WMS request parameters.\nAt least a `LAYERS` param is required. `STYLES`"
+            " is\n`''` by default. `VERSION` is `1.3.0` by default. `WIDTH`, `HEIGHT`,"
+            " `BBOX`\nand `CRS` (`SRS` for WMS version < 1.3.0) will be set"
+            " dynamically."
+        ),
+        title="params",
     )
     projection: Optional[str] = Field(
         None,
-        description='Projection. Default is the view projection.',
-        title='projection',
+        description="Projection. Default is the view projection.",
+        title="projection",
     )
     ratio: Optional[float] = Field(
         None,
-        description='Ratio. `1` means image requests are the size of the map viewport, `2` means\ntwice the width and height of the map viewport, and so on. Must be `1` or\nhigher.',
-        title='ratio',
+        description=(
+            "Ratio. `1` means image requests are the size of the map viewport, `2`"
+            " means\ntwice the width and height of the map viewport, and so on. Must be"
+            " `1` or\nhigher."
+        ),
+        title="ratio",
     )
     resolutions: Optional[List[float]] = Field(
         None,
-        description='Resolutions.\nIf specified, requests will be made for these resolutions only.',
-        title='resolutions',
+        description=(
+            "Resolutions.\nIf specified, requests will be made for these resolutions"
+            " only."
+        ),
+        title="resolutions",
     )
     serverType: Optional[Any] = Field(
         None,
-        description='The type of\nthe remote WMS server: `mapserver`, `geoserver` or `qgis`. Only needed if `hidpi` is `true`.',
-        title='serverType',
+        description=(
+            "The type of\nthe remote WMS server: `mapserver`, `geoserver` or `qgis`."
+            " Only needed if `hidpi` is `true`."
+        ),
+        title="serverType",
     )
-    url: str = Field(..., description='WMS service URL.', title='url')
+    url: str = Field(..., description="WMS service URL.", title="url")
 
 
 class TileLayerConfig(BaseModel):
@@ -1562,59 +1938,77 @@ class TileLayerConfig(BaseModel):
             AoClickRemoteWMSConfig,
             AoClickRemoteMapServerConfig,
         ]
-    ] = Field(None, title='aoClick')
-    aoColumns: Optional[AoColumnConfig] = Field(None, title='aoColumns')
-    aoCreate: Optional[AoCreateConfig] = Field(None, title='aoCreate')
-    aoInit: Optional[AoInitConfig] = Field(None, title='aoInit')
-    aoLegend: Optional[AoLegendConfig] = Field(None, title='aoLegend')
-    aoLoader: Optional[AoLoaderConfig] = Field(None, title='aoLoader')
+    ] = Field(None, title="aoClick")
+    aoColumns: Optional[AoColumnConfig] = Field(None, title="aoColumns")
+    aoCreate: Optional[AoCreateConfig] = Field(None, title="aoCreate")
+    aoInit: Optional[AoInitConfig] = Field(None, title="aoInit")
+    aoLegend: Optional[AoLegendConfig] = Field(None, title="aoLegend")
+    aoLoader: Optional[AoLoaderConfig] = Field(None, title="aoLoader")
     aoPolygonSelect: Optional[
         Union[AoPolygonSelectLocalConfig, AoPolygonSelectRemoteConfig]
-    ] = Field(None, title='aoPolygonSelect')
-    aoStyle: Optional[AoStyleConfig] = Field(None, title='aoStyle')
+    ] = Field(None, title="aoPolygonSelect")
+    aoStyle: Optional[AoStyleConfig] = Field(None, title="aoStyle")
     className: Optional[str] = Field(
         None,
-        description='A CSS class name to set to the layer element.',
-        title='className',
+        description="A CSS class name to set to the layer element.",
+        title="className",
     )
     extent: Optional[List[float]] = Field(
         None,
-        description='An array of numbers representing an extent: `[minx, miny, maxx, maxy]`.',
-        title='extent',
+        description=(
+            "An array of numbers representing an extent: `[minx, miny, maxx, maxy]`."
+        ),
+        title="extent",
     )
     maxResolution: Optional[float] = Field(
         None,
-        description='The maximum resolution (exclusive) below which this layer will\nbe visible.',
-        title='maxResolution',
+        description=(
+            "The maximum resolution (exclusive) below which this layer will\nbe"
+            " visible."
+        ),
+        title="maxResolution",
     )
     maxZoom: Optional[float] = Field(
         None,
-        description='The maximum view zoom level (inclusive) at which this layer will\nbe visible.',
-        title='maxZoom',
+        description=(
+            "The maximum view zoom level (inclusive) at which this layer will\nbe"
+            " visible."
+        ),
+        title="maxZoom",
     )
     minResolution: Optional[float] = Field(
         None,
-        description='The minimum resolution (inclusive) at which this layer will be\nvisible.',
-        title='minResolution',
+        description=(
+            "The minimum resolution (inclusive) at which this layer will be\nvisible."
+        ),
+        title="minResolution",
     )
     minZoom: Optional[float] = Field(
         None,
-        description='The minimum view zoom level (exclusive) above which this layer will be\nvisible.',
-        title='minZoom',
+        description=(
+            "The minimum view zoom level (exclusive) above which this layer will"
+            " be\nvisible."
+        ),
+        title="minZoom",
     )
-    name: Optional[str] = Field(None, title='name')
-    olClass: OlClass10 = Field(..., title='olClass')
+    name: Optional[str] = Field(None, title="name")
+    olClass: OlClass10 = Field(..., title="olClass")
     olSource: Union[TileArcGISRestConfig, TileWMSConfig, XYZConfig, WMTSConfig] = Field(
-        ..., title='olSource'
+        ..., title="olSource"
     )
     opacity: Optional[float] = Field(
-        None, description='Opacity (0, 1).', title='opacity'
+        None, description="Opacity (0, 1).", title="opacity"
     )
-    visible: Optional[bool] = Field(None, description='Visibility.', title='visible')
+    visible: Optional[bool] = Field(None, description="Visibility.", title="visible")
     zIndex: Optional[float] = Field(
         None,
-        description="The z-index for layer rendering.  At rendering time, the layers\nwill be ordered, first by Z-index and then by position. When `undefined`, a `zIndex` of 0 is assumed\nfor layers that are added to the map's `layers` collection, or `Infinity` when the layer's `setMap()`\nmethod was used.",
-        title='zIndex',
+        description=(
+            "The z-index for layer rendering.  At rendering time, the layers\nwill be"
+            " ordered, first by Z-index and then by position. When `undefined`, a"
+            " `zIndex` of 0 is assumed\nfor layers that are added to the map's `layers`"
+            " collection, or `Infinity` when the layer's `setMap()`\nmethod was used."
+        ),
+        title="zIndex",
     )
 
 
@@ -1629,57 +2023,75 @@ class VectorLayerConfig(BaseModel):
             AoClickRemoteWMSConfig,
             AoClickRemoteMapServerConfig,
         ]
-    ] = Field(None, title='aoClick')
-    aoColumns: Optional[AoColumnConfig] = Field(None, title='aoColumns')
-    aoCreate: Optional[AoCreateConfig] = Field(None, title='aoCreate')
-    aoInit: Optional[AoInitConfig] = Field(None, title='aoInit')
-    aoLegend: Optional[AoLegendConfig] = Field(None, title='aoLegend')
-    aoLoader: Optional[AoLoaderConfig] = Field(None, title='aoLoader')
+    ] = Field(None, title="aoClick")
+    aoColumns: Optional[AoColumnConfig] = Field(None, title="aoColumns")
+    aoCreate: Optional[AoCreateConfig] = Field(None, title="aoCreate")
+    aoInit: Optional[AoInitConfig] = Field(None, title="aoInit")
+    aoLegend: Optional[AoLegendConfig] = Field(None, title="aoLegend")
+    aoLoader: Optional[AoLoaderConfig] = Field(None, title="aoLoader")
     aoPolygonSelect: Optional[
         Union[AoPolygonSelectLocalConfig, AoPolygonSelectRemoteConfig]
-    ] = Field(None, title='aoPolygonSelect')
-    aoStyle: Optional[AoStyleConfig] = Field(None, title='aoStyle')
+    ] = Field(None, title="aoPolygonSelect")
+    aoStyle: Optional[AoStyleConfig] = Field(None, title="aoStyle")
     className: Optional[str] = Field(
         None,
-        description='A CSS class name to set to the layer element.',
-        title='className',
+        description="A CSS class name to set to the layer element.",
+        title="className",
     )
     extent: Optional[List[float]] = Field(
         None,
-        description='An array of numbers representing an extent: `[minx, miny, maxx, maxy]`.',
-        title='extent',
+        description=(
+            "An array of numbers representing an extent: `[minx, miny, maxx, maxy]`."
+        ),
+        title="extent",
     )
     maxResolution: Optional[float] = Field(
         None,
-        description='The maximum resolution (exclusive) below which this layer will\nbe visible.',
-        title='maxResolution',
+        description=(
+            "The maximum resolution (exclusive) below which this layer will\nbe"
+            " visible."
+        ),
+        title="maxResolution",
     )
     maxZoom: Optional[float] = Field(
         None,
-        description='The maximum view zoom level (inclusive) at which this layer will\nbe visible.',
-        title='maxZoom',
+        description=(
+            "The maximum view zoom level (inclusive) at which this layer will\nbe"
+            " visible."
+        ),
+        title="maxZoom",
     )
     minResolution: Optional[float] = Field(
         None,
-        description='The minimum resolution (inclusive) at which this layer will be\nvisible.',
-        title='minResolution',
+        description=(
+            "The minimum resolution (inclusive) at which this layer will be\nvisible."
+        ),
+        title="minResolution",
     )
     minZoom: Optional[float] = Field(
         None,
-        description='The minimum view zoom level (exclusive) above which this layer will be\nvisible.',
-        title='minZoom',
+        description=(
+            "The minimum view zoom level (exclusive) above which this layer will"
+            " be\nvisible."
+        ),
+        title="minZoom",
     )
-    name: Optional[str] = Field(None, title='name')
-    olClass: OlClass12 = Field(..., title='olClass')
-    olSource: VectorSourceConfig = Field(..., title='olSource')
+    name: Optional[str] = Field(None, title="name")
+    olClass: OlClass12 = Field(..., title="olClass")
+    olSource: VectorSourceConfig = Field(..., title="olSource")
     opacity: Optional[float] = Field(
-        None, description='Opacity (0, 1).', title='opacity'
+        None, description="Opacity (0, 1).", title="opacity"
     )
-    visible: Optional[bool] = Field(None, description='Visibility.', title='visible')
+    visible: Optional[bool] = Field(None, description="Visibility.", title="visible")
     zIndex: Optional[float] = Field(
         None,
-        description="The z-index for layer rendering.  At rendering time, the layers\nwill be ordered, first by Z-index and then by position. When `undefined`, a `zIndex` of 0 is assumed\nfor layers that are added to the map's `layers` collection, or `Infinity` when the layer's `setMap()`\nmethod was used.",
-        title='zIndex',
+        description=(
+            "The z-index for layer rendering.  At rendering time, the layers\nwill be"
+            " ordered, first by Z-index and then by position. When `undefined`, a"
+            " `zIndex` of 0 is assumed\nfor layers that are added to the map's `layers`"
+            " collection, or `Infinity` when the layer's `setMap()`\nmethod was used."
+        ),
+        title="zIndex",
     )
 
 
@@ -1694,90 +2106,145 @@ class VectorTileLayerConfig(BaseModel):
             AoClickRemoteWMSConfig,
             AoClickRemoteMapServerConfig,
         ]
-    ] = Field(None, title='aoClick')
-    aoColumns: Optional[AoColumnConfig] = Field(None, title='aoColumns')
-    aoCreate: Optional[AoCreateConfig] = Field(None, title='aoCreate')
-    aoInit: Optional[AoInitConfig] = Field(None, title='aoInit')
-    aoLegend: Optional[AoLegendConfig] = Field(None, title='aoLegend')
-    aoLoader: Optional[AoLoaderConfig] = Field(None, title='aoLoader')
+    ] = Field(None, title="aoClick")
+    aoColumns: Optional[AoColumnConfig] = Field(None, title="aoColumns")
+    aoCreate: Optional[AoCreateConfig] = Field(None, title="aoCreate")
+    aoInit: Optional[AoInitConfig] = Field(None, title="aoInit")
+    aoLegend: Optional[AoLegendConfig] = Field(None, title="aoLegend")
+    aoLoader: Optional[AoLoaderConfig] = Field(None, title="aoLoader")
     aoPolygonSelect: Optional[
         Union[AoPolygonSelectLocalConfig, AoPolygonSelectRemoteConfig]
-    ] = Field(None, title='aoPolygonSelect')
-    aoStyle: Optional[AoStyleConfig] = Field(None, title='aoStyle')
+    ] = Field(None, title="aoPolygonSelect")
+    aoStyle: Optional[AoStyleConfig] = Field(None, title="aoStyle")
     className: Optional[str] = Field(
         None,
-        description='A CSS class name to set to the layer element.',
-        title='className',
+        description="A CSS class name to set to the layer element.",
+        title="className",
     )
     declutter: Optional[bool] = Field(
         None,
-        description='Declutter images and text. Decluttering is applied to all\nimage and text styles of all Vector and VectorTile layers that have set this to `true`. The priority\nis defined by the z-index of the layer, the `zIndex` of the style and the render order of features.\nHigher z-index means higher priority. Within the same z-index, a feature rendered before another has\nhigher priority.\n\nAs an optimization decluttered features from layers with the same `className` are rendered above\nthe fill and stroke styles of all of those layers regardless of z-index.  To opt out of this\nbehavior and place declutterd features with their own layer configure the layer with a `className`\nother than `ol-layer`.',
-        title='declutter',
+        description=(
+            "Declutter images and text. Decluttering is applied to all\nimage and text"
+            " styles of all Vector and VectorTile layers that have set this to `true`."
+            " The priority\nis defined by the z-index of the layer, the `zIndex` of the"
+            " style and the render order of features.\nHigher z-index means higher"
+            " priority. Within the same z-index, a feature rendered before another"
+            " has\nhigher priority.\n\nAs an optimization decluttered features from"
+            " layers with the same `className` are rendered above\nthe fill and stroke"
+            " styles of all of those layers regardless of z-index.  To opt out of"
+            " this\nbehavior and place declutterd features with their own layer"
+            " configure the layer with a `className`\nother than `ol-layer`."
+        ),
+        title="declutter",
     )
     extent: Optional[List[float]] = Field(
         None,
-        description='An array of numbers representing an extent: `[minx, miny, maxx, maxy]`.',
-        title='extent',
+        description=(
+            "An array of numbers representing an extent: `[minx, miny, maxx, maxy]`."
+        ),
+        title="extent",
     )
     maxResolution: Optional[float] = Field(
         None,
-        description='The maximum resolution (exclusive) below which this layer will\nbe visible.',
-        title='maxResolution',
+        description=(
+            "The maximum resolution (exclusive) below which this layer will\nbe"
+            " visible."
+        ),
+        title="maxResolution",
     )
     maxZoom: Optional[float] = Field(
         None,
-        description='The maximum view zoom level (inclusive) at which this layer will\nbe visible.',
-        title='maxZoom',
+        description=(
+            "The maximum view zoom level (inclusive) at which this layer will\nbe"
+            " visible."
+        ),
+        title="maxZoom",
     )
     minResolution: Optional[float] = Field(
         None,
-        description='The minimum resolution (inclusive) at which this layer will be\nvisible.',
-        title='minResolution',
+        description=(
+            "The minimum resolution (inclusive) at which this layer will be\nvisible."
+        ),
+        title="minResolution",
     )
     minZoom: Optional[float] = Field(
         None,
-        description='The minimum view zoom level (exclusive) above which this layer will be\nvisible.',
-        title='minZoom',
+        description=(
+            "The minimum view zoom level (exclusive) above which this layer will"
+            " be\nvisible."
+        ),
+        title="minZoom",
     )
-    name: Optional[str] = Field(None, title='name')
-    olClass: OlClass14 = Field(..., title='olClass')
-    olSource: VectorTileSourceConfig = Field(..., title='olSource')
+    name: Optional[str] = Field(None, title="name")
+    olClass: OlClass14 = Field(..., title="olClass")
+    olSource: VectorTileSourceConfig = Field(..., title="olSource")
     opacity: Optional[float] = Field(
-        None, description='Opacity (0, 1).', title='opacity'
+        None, description="Opacity (0, 1).", title="opacity"
     )
     preload: Optional[float] = Field(
         None,
-        description='Preload. Load low-resolution tiles up to `preload` levels. `0`\nmeans no preloading.',
-        title='preload',
+        description=(
+            "Preload. Load low-resolution tiles up to `preload` levels. `0`\nmeans no"
+            " preloading."
+        ),
+        title="preload",
     )
     renderBuffer: Optional[float] = Field(
         None,
-        description='The buffer in pixels around the tile extent used by the\nrenderer when getting features from the vector tile for the rendering or hit-detection.\nRecommended value: Vector tiles are usually generated with a buffer, so this value should match\nthe largest possible buffer of the used tiles. It should be at least the size of the largest\npoint symbol or line width.',
-        title='renderBuffer',
+        description=(
+            "The buffer in pixels around the tile extent used by the\nrenderer when"
+            " getting features from the vector tile for the rendering or"
+            " hit-detection.\nRecommended value: Vector tiles are usually generated"
+            " with a buffer, so this value should match\nthe largest possible buffer of"
+            " the used tiles. It should be at least the size of the largest\npoint"
+            " symbol or line width."
+        ),
+        title="renderBuffer",
     )
     renderMode: Optional[Any] = Field(
         None,
-        description="Render mode for vector tiles:\n* `'hybrid'`: Polygon and line elements are rendered as images, so pixels are scaled during zoom\nanimations. Point symbols and texts are accurately rendered as vectors and can stay upright on\nrotated views.\n* `'vector'`: Everything is rendered as vectors. Use this mode for improved performance on vector\ntile layers with only a few rendered features (e.g. for highlighting a subset of features of\nanother layer with the same source).",
-        title='renderMode',
+        description=(
+            "Render mode for vector tiles:\n* `'hybrid'`: Polygon and line elements are"
+            " rendered as images, so pixels are scaled during zoom\nanimations. Point"
+            " symbols and texts are accurately rendered as vectors and can stay upright"
+            " on\nrotated views.\n* `'vector'`: Everything is rendered as vectors. Use"
+            " this mode for improved performance on vector\ntile layers with only a few"
+            " rendered features (e.g. for highlighting a subset of features of\nanother"
+            " layer with the same source)."
+        ),
+        title="renderMode",
     )
     updateWhileAnimating: Optional[bool] = Field(
         None,
-        description='When set to `true`, feature batches will be\nrecreated during animations. This means that no vectors will be shown clipped, but the setting\nwill have a performance impact for large amounts of vector data. When set to `false`, batches\nwill be recreated when no animation is active.',
-        title='updateWhileAnimating',
+        description=(
+            "When set to `true`, feature batches will be\nrecreated during animations."
+            " This means that no vectors will be shown clipped, but the setting\nwill"
+            " have a performance impact for large amounts of vector data. When set to"
+            " `false`, batches\nwill be recreated when no animation is active."
+        ),
+        title="updateWhileAnimating",
     )
     updateWhileInteracting: Optional[bool] = Field(
         None,
-        description='When set to `true`, feature batches will be\nrecreated during interactions. See also `updateWhileAnimating`.',
-        title='updateWhileInteracting',
+        description=(
+            "When set to `true`, feature batches will be\nrecreated during"
+            " interactions. See also `updateWhileAnimating`."
+        ),
+        title="updateWhileInteracting",
     )
     useInterimTilesOnError: Optional[bool] = Field(
-        None, description='Use interim tiles on error.', title='useInterimTilesOnError'
+        None, description="Use interim tiles on error.", title="useInterimTilesOnError"
     )
-    visible: Optional[bool] = Field(None, description='Visibility.', title='visible')
+    visible: Optional[bool] = Field(None, description="Visibility.", title="visible")
     zIndex: Optional[float] = Field(
         None,
-        description="The z-index for layer rendering.  At rendering time, the layers\nwill be ordered, first by Z-index and then by position. When `undefined`, a `zIndex` of 0 is assumed\nfor layers that are added to the map's `layers` collection, or `Infinity` when the layer's `setMap()`\nmethod was used.",
-        title='zIndex',
+        description=(
+            "The z-index for layer rendering.  At rendering time, the layers\nwill be"
+            " ordered, first by Z-index and then by position. When `undefined`, a"
+            " `zIndex` of 0 is assumed\nfor layers that are added to the map's `layers`"
+            " collection, or `Infinity` when the layer's `setMap()`\nmethod was used."
+        ),
+        title="zIndex",
     )
 
 
@@ -1805,16 +2272,16 @@ class AoLayerOptionAllConfig(BaseModel):
             AoClickRemoteWMSConfig,
             AoClickRemoteMapServerConfig,
         ]
-    ] = Field(None, title='aoClick')
-    aoColumns: Optional[AoColumnConfig] = Field(None, title='aoColumns')
-    aoCreate: Optional[AoCreateConfig] = Field(None, title='aoCreate')
-    aoInit: Optional[AoInitConfig] = Field(None, title='aoInit')
-    aoLegend: Optional[AoLegendConfig] = Field(None, title='aoLegend')
-    aoLoader: Optional[AoLoaderConfig] = Field(None, title='aoLoader')
+    ] = Field(None, title="aoClick")
+    aoColumns: Optional[AoColumnConfig] = Field(None, title="aoColumns")
+    aoCreate: Optional[AoCreateConfig] = Field(None, title="aoCreate")
+    aoInit: Optional[AoInitConfig] = Field(None, title="aoInit")
+    aoLegend: Optional[AoLegendConfig] = Field(None, title="aoLegend")
+    aoLoader: Optional[AoLoaderConfig] = Field(None, title="aoLoader")
     aoPolygonSelect: Optional[
         Union[AoPolygonSelectLocalConfig, AoPolygonSelectRemoteConfig]
-    ] = Field(None, title='aoPolygonSelect')
-    aoStyle: Optional[AoStyleConfig] = Field(None, title='aoStyle')
+    ] = Field(None, title="aoPolygonSelect")
+    aoStyle: Optional[AoStyleConfig] = Field(None, title="aoStyle")
 
 
 class AoLayerOptionBaseConfig(BaseModel):
@@ -1828,15 +2295,15 @@ class AoLayerOptionBaseConfig(BaseModel):
             AoClickRemoteWMSConfig,
             AoClickRemoteMapServerConfig,
         ]
-    ] = Field(None, title='aoClick')
-    aoColumns: Optional[AoColumnConfig] = Field(None, title='aoColumns')
-    aoCreate: Optional[AoCreateConfig] = Field(None, title='aoCreate')
-    aoInit: Optional[AoInitConfig] = Field(None, title='aoInit')
-    aoLegend: Optional[AoLegendConfig] = Field(None, title='aoLegend')
-    aoLoader: Optional[AoLoaderConfig] = Field(None, title='aoLoader')
+    ] = Field(None, title="aoClick")
+    aoColumns: Optional[AoColumnConfig] = Field(None, title="aoColumns")
+    aoCreate: Optional[AoCreateConfig] = Field(None, title="aoCreate")
+    aoInit: Optional[AoInitConfig] = Field(None, title="aoInit")
+    aoLegend: Optional[AoLegendConfig] = Field(None, title="aoLegend")
+    aoLoader: Optional[AoLoaderConfig] = Field(None, title="aoLoader")
     aoPolygonSelect: Optional[
         Union[AoPolygonSelectLocalConfig, AoPolygonSelectRemoteConfig]
-    ] = Field(None, title='aoPolygonSelect')
+    ] = Field(None, title="aoPolygonSelect")
 
 
 class AoPolygonSelectConfig(BaseModel):
@@ -1867,58 +2334,76 @@ class ImageLayerConfig(BaseModel):
             AoClickRemoteWMSConfig,
             AoClickRemoteMapServerConfig,
         ]
-    ] = Field(None, title='aoClick')
-    aoColumns: Optional[AoColumnConfig] = Field(None, title='aoColumns')
-    aoCreate: Optional[AoCreateConfig] = Field(None, title='aoCreate')
-    aoInit: Optional[AoInitConfig] = Field(None, title='aoInit')
-    aoLegend: Optional[AoLegendConfig] = Field(None, title='aoLegend')
-    aoLoader: Optional[AoLoaderConfig] = Field(None, title='aoLoader')
+    ] = Field(None, title="aoClick")
+    aoColumns: Optional[AoColumnConfig] = Field(None, title="aoColumns")
+    aoCreate: Optional[AoCreateConfig] = Field(None, title="aoCreate")
+    aoInit: Optional[AoInitConfig] = Field(None, title="aoInit")
+    aoLegend: Optional[AoLegendConfig] = Field(None, title="aoLegend")
+    aoLoader: Optional[AoLoaderConfig] = Field(None, title="aoLoader")
     aoPolygonSelect: Optional[
         Union[AoPolygonSelectLocalConfig, AoPolygonSelectRemoteConfig]
-    ] = Field(None, title='aoPolygonSelect')
+    ] = Field(None, title="aoPolygonSelect")
     className: Optional[str] = Field(
         None,
-        description='A CSS class name to set to the layer element.',
-        title='className',
+        description="A CSS class name to set to the layer element.",
+        title="className",
     )
     extent: Optional[List[float]] = Field(
         None,
-        description='An array of numbers representing an extent: `[minx, miny, maxx, maxy]`.',
-        title='extent',
+        description=(
+            "An array of numbers representing an extent: `[minx, miny, maxx, maxy]`."
+        ),
+        title="extent",
     )
     maxResolution: Optional[float] = Field(
         None,
-        description='The maximum resolution (exclusive) below which this layer will\nbe visible.',
-        title='maxResolution',
+        description=(
+            "The maximum resolution (exclusive) below which this layer will\nbe"
+            " visible."
+        ),
+        title="maxResolution",
     )
     maxZoom: Optional[float] = Field(
         None,
-        description='The maximum view zoom level (inclusive) at which this layer will\nbe visible.',
-        title='maxZoom',
+        description=(
+            "The maximum view zoom level (inclusive) at which this layer will\nbe"
+            " visible."
+        ),
+        title="maxZoom",
     )
     minResolution: Optional[float] = Field(
         None,
-        description='The minimum resolution (inclusive) at which this layer will be\nvisible.',
-        title='minResolution',
+        description=(
+            "The minimum resolution (inclusive) at which this layer will be\nvisible."
+        ),
+        title="minResolution",
     )
     minZoom: Optional[float] = Field(
         None,
-        description='The minimum view zoom level (exclusive) above which this layer will be\nvisible.',
-        title='minZoom',
+        description=(
+            "The minimum view zoom level (exclusive) above which this layer will"
+            " be\nvisible."
+        ),
+        title="minZoom",
     )
-    name: Optional[str] = Field(None, title='name')
-    olClass: OlClass5 = Field(..., title='olClass')
+    name: Optional[str] = Field(None, title="name")
+    olClass: OlClass5 = Field(..., title="olClass")
     olSource: Union[ImageWMSConfig, ImageArcGISRestConfig] = Field(
-        ..., title='olSource'
+        ..., title="olSource"
     )
     opacity: Optional[float] = Field(
-        None, description='Opacity (0, 1).', title='opacity'
+        None, description="Opacity (0, 1).", title="opacity"
     )
-    visible: Optional[bool] = Field(None, description='Visibility.', title='visible')
+    visible: Optional[bool] = Field(None, description="Visibility.", title="visible")
     zIndex: Optional[float] = Field(
         None,
-        description="The z-index for layer rendering.  At rendering time, the layers\nwill be ordered, first by Z-index and then by position. When `undefined`, a `zIndex` of 0 is assumed\nfor layers that are added to the map's `layers` collection, or `Infinity` when the layer's `setMap()`\nmethod was used.",
-        title='zIndex',
+        description=(
+            "The z-index for layer rendering.  At rendering time, the layers\nwill be"
+            " ordered, first by Z-index and then by position. When `undefined`, a"
+            " `zIndex` of 0 is assumed\nfor layers that are added to the map's `layers`"
+            " collection, or `Infinity` when the layer's `setMap()`\nmethod was used."
+        ),
+        title="zIndex",
     )
 
 
@@ -1926,16 +2411,16 @@ class Model(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    accessKey: str = Field(..., title='accessKey')
-    description: Optional[str] = Field(None, title='description')
+    accessKey: str = Field(..., title="accessKey")
+    description: Optional[str] = Field(None, title="description")
     layer: List[
         Union[
             VectorLayerConfig, ImageLayerConfig, VectorTileLayerConfig, TileLayerConfig
         ]
-    ] = Field(..., title='layer')
-    meta: Meta = Field(..., title='meta')
-    name: str = Field(..., title='name')
-    type: Type = Field(..., title='type')
+    ] = Field(..., title="layer")
+    meta: Meta = Field(..., title="meta")
+    name: str = Field(..., title="name")
+    type: Type = Field(..., title="type")
 
 
 class AoLayerConfig(BaseModel):
@@ -1948,13 +2433,13 @@ class AoLayerGroupConfig(BaseModel):
     class Config:
         extra = Extra.forbid
 
-    accessKey: str = Field(..., title='accessKey')
-    description: Optional[str] = Field(None, title='description')
+    accessKey: str = Field(..., title="accessKey")
+    description: Optional[str] = Field(None, title="description")
     layer: List[
         Union[
             VectorLayerConfig, ImageLayerConfig, VectorTileLayerConfig, TileLayerConfig
         ]
-    ] = Field(..., title='layer')
-    meta: Meta1 = Field(..., title='meta')
-    name: str = Field(..., title='name')
-    type: Type5 = Field(..., title='type')
+    ] = Field(..., title="layer")
+    meta: Meta1 = Field(..., title="meta")
+    name: str = Field(..., title="name")
+    type: Type5 = Field(..., title="type")
