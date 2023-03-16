@@ -1,0 +1,274 @@
+{
+  "created": 1645879157540,
+  "createdBy": "google-oauth2|108437856006995528186",
+  "id": "rau_AACYvXHnZWJ7LFMc",
+  "modified": 1678456156571,
+  "modifiedBy": "auth0|5fb322d462743200759833ce",
+  "parameter": {
+    "address": {
+      "address_line1": "LARUE PROSPECT Rd",
+      "address_state": "OH",
+      "address_zip": "43302",
+      "name": "BENTLEY CARL L"
+    },
+    "flood-high": 0,
+    "flood-high-acre": 0,
+    "flood-low": 0,
+    "flood-low-acre": 0,
+    "general": {
+      "county": "Marion",
+      "owner": "BENTLEY CARL L",
+      "ownerGroup": "Person",
+      "primaryFirstName": "Carl",
+      "primaryLastName": "Bentley",
+      "primaryOwner": "Carl L Bentley",
+      "primaryRealConfidence": 1,
+      "state": "OH",
+      "zip": "43302"
+    },
+    "land": {
+      "acreage_calc": "107.23",
+      "acreage_deeded": "106.9890",
+      "buildable-acre": 98.1,
+      "buildable-relative": 0.915,
+      "census_zip": "43302",
+      "cid": 39101,
+      "county_id": 39101,
+      "county_name": "Marion",
+      "critical_habitat_joint": 0,
+      "critical_habitat_joint-acre": 0,
+      "description": "Acreage Deeded: 106.9890\nLandUse: 110 : Agricultural",
+      "elevation": "936.915179872144",
+      "flood-high": 0,
+      "flood-high-acre": 0,
+      "flood-low": 0,
+      "flood-low-acre": 0,
+      "flood_02": 0,
+      "flood_02-acre": 0,
+      "flood_1": 0,
+      "flood_1-acre": 0,
+      "land-use-code": "110",
+      "land-use-name": "Agricultural",
+      "last_updated": "2022-Q1",
+      "legal_desc2": "PT NW",
+      "legal_desc3": "SEC 7 MAP 2",
+      "manmade_airport": 0,
+      "manmade_airport-acre": 0,
+      "manmade_building": 0,
+      "manmade_building-acre": 0,
+      "manmade_oil_and_natural_gas": 0,
+      "manmade_oil_and_natural_gas-acre": 0,
+      "manmade_rail": 0,
+      "manmade_rail-acre": 0,
+      "manmade_road": 0.011,
+      "manmade_road-acre": 1.2,
+      "manmade_transmission": 0.019,
+      "manmade_transmission-acre": 2,
+      "muni_id": 1086579,
+      "muni_name": "Green Camp",
+      "ngh_code": "1550",
+      "pad_us": 0,
+      "pad_us-acre": 0,
+      "pin": "100050000200",
+      "rausa_id": 3978,
+      "robust_id": "AACYvXHnZWJ7LFMc",
+      "sale_price": "0.00",
+      "school_dist_id": 3904841,
+      "size": 107.23,
+      "size-units": "units:area:acre",
+      "slope": 0.001,
+      "slope-acre": 0.1,
+      "soil_soil": 0,
+      "soil_soil-acre": 0,
+      "trans_date": "2017-12-20",
+      "tree": 0,
+      "tree-acre": 0,
+      "tree_tree": 0,
+      "tree_tree-acre": 0,
+      "wetlands": 0.009,
+      "wetlands-acre": 0.9
+    },
+    "location": {
+      "lat": 40.5377710874118,
+      "long": -83.1835795295214,
+      "wkt": "MULTIPOLYGON(((-83.179771253267 40.5399822901479,-83.1797972117714 40.5390671142039,-83.1798546160833 40.5370432120465,-83.1799093698737 40.535112636515,-83.1799111209974 40.5350508869906,-83.1800483779772 40.5350519678183,-83.1806172643057 40.5350564460129,-83.1845601167314 40.5350731436742,-83.1845849258236 40.5350732481826,-83.1853051688874 40.5350762837182,-83.1888269486801 40.5350808279094,-83.1888269623693 40.5351425881214,-83.1888269668095 40.535163174585,-83.1888272544551 40.536483266813,-83.1895382859001 40.5364789799598,-83.1896462323691 40.536478328757,-83.1896339539988 40.5373829312162,-83.1896302357669 40.5377199169328,-83.1896296560216 40.5377724620021,-83.1896198613468 40.5386601708795,-83.189619424724 40.5386997269598,-83.1896187186966 40.5387637300424,-83.189617105506 40.5391554014188,-83.1896170812907 40.5391612837036,-83.189617030958 40.5391734983235,-83.1895090950394 40.5391733414253,-83.1885731076417 40.5391719768892,-83.1885374427832 40.5391719247616,-83.1885340378171 40.5399953874511,-83.1797887471501 40.539982317056,-83.179771253267 40.5399822901479)))"
+    },
+    "mailaddress": {
+      "address_line2": "MARION OH 43302"
+    },
+    "name": {
+      "description": "Generated from ReportAll USA. CountyId: 39101, ParcelId: 100050000200",
+      "name": "Bentley Carl L - 107.23"
+    }
+  },
+  "rn": "team/demo-echo/asset/rau_AACYvXHnZWJ7LFMc",
+  "task": {
+    "canada": {
+      "slope": {
+        "run": false
+      }
+    },
+    "japan": {
+      "area": {
+        "exclude_agricultural": true,
+        "exclude_nature": true,
+        "exclude_park": true,
+        "exclude_protection": true,
+        "exclude_special_nature": true,
+        "run": false
+      },
+      "debris_flow": {
+        "exclude_caution": true,
+        "exclude_primary": true,
+        "run": false
+      },
+      "forest": {
+        "exclude_managed": true,
+        "exclude_national": true,
+        "exclude_preserved": true,
+        "run": false
+      },
+      "slope": {
+        "run": false
+      },
+      "urban": {
+        "exclude_layer": true,
+        "run": false
+      },
+      "wilderness": {
+        "exclude_forest": true,
+        "exclude_wilderness": true,
+        "run": false
+      }
+    },
+    "uk": {
+      "ancient_woodland": {
+        "exclude_ancient_woodland": true,
+        "run": false
+      },
+      "areas_of_natural_beauty": {
+        "exclude_layer": true,
+        "run": false
+      },
+      "environmentally_sensitive_area": {
+        "exclude_layer": true,
+        "run": false
+      },
+      "flood_wales": {
+        "exclude_flood_wales": true,
+        "run": false
+      },
+      "national_heritage_sites": {
+        "exclude_nat_heritage_battlefields": true,
+        "exclude_nat_heritage_building_pres": true,
+        "exclude_nat_heritage_har": true,
+        "exclude_nat_heritage_heritage": true,
+        "exclude_nat_heritage_immunity": true,
+        "exclude_nat_heritage_list_buildings": true,
+        "exclude_nat_heritage_monuments": true,
+        "exclude_nat_heritage_parks": true,
+        "exclude_nat_heritage_wrecks": true,
+        "run": false
+      },
+      "national_trails_england": {
+        "exclude_layer": true,
+        "run": false
+      },
+      "priority_habitats_inventory_england": {
+        "exclude_central": true,
+        "exclude_north": true,
+        "exclude_south": true,
+        "run": false
+      },
+      "priority_river_habitat": {
+        "exclude_headwater": true,
+        "exclude_rivers": true,
+        "run": false
+      },
+      "ramsar_sites": {
+        "exclude_ramsar": true,
+        "run": false
+      },
+      "roads": {
+        "exclude_roads": true,
+        "run": false
+      },
+      "sites_special_scientific_interest": {
+        "exclude_layer": true,
+        "run": false
+      },
+      "slope": {
+        "run": false
+      },
+      "special_areas_conservation": {
+        "exclude_sacs": true,
+        "run": false
+      },
+      "special_protection_areas": {
+        "exclude_spa": true,
+        "run": false
+      },
+      "transmission_lines": {
+        "exclude_transmission_lines": true,
+        "run": false
+      },
+      "uk_flood_map": {
+        "exclude_layer": true,
+        "run": false
+      }
+    },
+    "us": {
+      "critical_habitat": {
+        "exclude_joint": true,
+        "run": true
+      },
+      "flood": {
+        "buffer_02": 1.828799941478402,
+        "buffer_1": 1.5239999512320015,
+        "exclude_02": true,
+        "exclude_1": true,
+        "run": true
+      },
+      "manmade": {
+        "buffer_airport": 25,
+        "buffer_building": 10,
+        "buffer_oil_and_natural_gas": 30,
+        "buffer_rail": 20,
+        "buffer_road": 5,
+        "buffer_transmission": 15,
+        "exclude_airport": true,
+        "exclude_building": true,
+        "exclude_oil_and_natural_gas": true,
+        "exclude_rail": true,
+        "exclude_road": true,
+        "exclude_transmission": true,
+        "run": true
+      },
+      "pad": {
+        "exclude_us": true,
+        "run": true
+      },
+      "slope": {
+        "exclude": true,
+        "levels": "10",
+        "run": true,
+        "runSouthernAspect": false
+      },
+      "soil": {
+        "depth": 0.3047999902464003,
+        "exclude": true,
+        "run": true
+      },
+      "tree": {
+        "coverage": 50,
+        "exclude": true,
+        "run": true
+      },
+      "wetlands": {
+        "exclude_layer": true,
+        "run": true
+      }
+    }
+  },
+  "type": "asset:land:off"
+}
