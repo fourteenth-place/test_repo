@@ -28,50 +28,50 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
       
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
+      # - name: Dump job context
+      #   env:
+      #     JOB_CONTEXT: ${{ toJson(job) }}
+      #   run: echo "$JOB_CONTEXT"
+      # - name: Dump steps context
+      #   env:
+      #     STEPS_CONTEXT: ${{ toJson(steps) }}
+      #   run: echo "$STEPS_CONTEXT"
+      # - name: Dump runner context
+      #   env:
+      #     RUNNER_CONTEXT: ${{ toJson(runner) }}
+      #   run: echo "$RUNNER_CONTEXT"
+      # - name: Dump strategy context
+      #   env:
+      #     STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+      #   run: echo "$STRATEGY_CONTEXT"
+      # - name: Dump matrix context
+      #   env:
+      #     MATRIX_CONTEXT: ${{ toJson(matrix) }}
+      #   run: echo "$MATRIX_CONTEXT"
 
-      - name: Show default environment variables
-        run: |
-          echo "The job_id is: $GITHUB_JOB"   # reference the default environment variables
-          echo "The id of this action is: $GITHUB_ACTION"   # reference the default environment variables
-          echo "The run id is: $GITHUB_RUN_ID"
-          echo "The GitHub Actor's username is: $GITHUB_ACTOR"
-          echo "GitHub SHA: $GITHUB_SHA"
+      # - name: Show default environment variables
+      #   run: |
+      #     echo "The job_id is: $GITHUB_JOB"   # reference the default environment variables
+      #     echo "The id of this action is: $GITHUB_ACTION"   # reference the default environment variables
+      #     echo "The run id is: $GITHUB_RUN_ID"
+      #     echo "The GitHub Actor's username is: $GITHUB_ACTOR"
+      #     echo "GitHub SHA: $GITHUB_SHA"
       - name: Show pull request
         env:
           PR: ${{ toJson(github.event.pull_request)}}
         run: |
           echo "$PR"
 
-      # DEBUG end
-      - name: Deploy Tasks Version
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: echo "${{ toJson(github.event.pull_request) }}"
+      # # DEBUG end
+      # - name: Deploy Tasks Version
+      #   if: startsWith(github.ref, 'refs/tags/v')
+      #   run: echo "${{ toJson(github.event.pull_request) }}"
  
       - name: Deploy Tasks PR
-        if: (github.event.pull_request.number || github.ref == 'refs/heads/main') && github.event.pull_request.merged == false
+        if: (github.event.pull_request.number || github.ref == 'refs/heads/main') && github.event.pull_request.state == 'open'
         run: echo "${{ toJson(github.event.pull_request) }}"
           
       - name: Deploy Tasks Main
-        if: (github.event.pull_request.number || github.ref == 'refs/heads/main') && github.event.pull_request.merged == true
+        if: (github.event.pull_request.number || github.ref == 'refs/heads/main') && github.event.pull_request.state == 'closed'
         run: echo "${{ toJson(github.event.pull_request) }}"
 
