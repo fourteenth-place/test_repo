@@ -1,0 +1,15 @@
+appdirs==1.4.4
+certifi @ file:///croot/certifi_1671487769961/work/certifi
+distlib==0.3.2
+filelock==3.0.12
+flit_core @ file:///opt/conda/conda-bld/flit-core_1644941570762/work/source/flit_core
+mypy @ file:///croot/mypy_1668440235336/work
+mypy-extensions==0.4.3
+psutil @ file:///opt/conda/conda-bld/psutil_1656431268089/work
+pydantic @ file:///croot/pydantic_1667416129100/work
+ruff==0.0.255
+toml @ file:///tmp/build/80754af9/toml_1616166611790/work
+tomli @ file:///opt/conda/conda-bld/tomli_1657175507142/work
+typing_extensions @ file:///croot/typing_extensions_1669924550328/work
+virtualenv==20.4.7
+pre-commit
