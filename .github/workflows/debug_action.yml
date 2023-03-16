@@ -38,6 +38,6 @@ jobs:
         run: echo test
           
       - name: Deploy Tasks Main
-        if: github.event.pull_request.number || github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && !github.event.pull_request.number && !null
         run: echo test
 
