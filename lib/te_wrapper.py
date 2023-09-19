@@ -13,3 +13,5 @@ async def new_function():
         raise e
 
 asyncio.run(new_function())
+asyncio.run(new_function())
+asyncio.run(new_function())

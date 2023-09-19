@@ -1,3 +1,4 @@
+from asyncio.exceptions import TimeoutError
 import aiohttp
 
 
@@ -15,19 +16,21 @@ class Client:
 
 
 async def failing_function():
+    url = "https://httpstat.us/200?sleep=1"
     client = Client()
-    session = await client.get_session()
-    url = "https://httpstat.us/200?sleep=5000"
-    try:
-        async with session.post(url, timeout=0.01) as response:
-            try:
-                print('retreiving data')
-                data = await response.text
-            except Exception as e:
-                print("failing_function caught")
-                raise e
-    except Exception as e:
-        print("failing_function outer caught")
-        raise e
+    # session = await client.get_session()
+    async with await client.get_session() as session:
+        try:
+            response = await session.post(url, timeout=3)
+            print('retreiving data')
+            data = await response.text()
+            print(data)
+        except TimeoutError as e:
+            print("TIMEOUT ERROR!")
+            raise e
+        except Exception as e:
+            print("failing_function caught")
+            raise e
         
     return data
+
